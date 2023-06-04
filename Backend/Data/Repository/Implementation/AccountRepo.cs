@@ -3,21 +3,15 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Model.DTO;
 using Model.Enitities;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Data.Repository.Implementation
 {
     public class AccountRepo : IAccountRepo
     {
         private readonly UserManager<ApplicationUser> _userManager;
-        private readonly RoleManager<ApplicationUser> _roleManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
 
-        public AccountRepo(UserManager<ApplicationUser> userManager, RoleManager<ApplicationUser> roleManager)
+        public AccountRepo(UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager)
         {
             _userManager = userManager;
             _roleManager = roleManager;
@@ -25,18 +19,18 @@ namespace Data.Repository.Implementation
         public async Task<bool> AddRoleAsync(ApplicationUser user, string Role)
         {
             var AddRole = await _userManager.AddToRoleAsync(user, Role);
-            if(AddRole.Succeeded)
+            if (AddRole.Succeeded)
             {
                 return true;
             }
             return false;
         }
-       public async Task<bool> RemoveRoleAsync(ApplicationUser user, IList<string> role)
+        public async Task<bool> RemoveRoleAsync(ApplicationUser user, IList<string> role)
         {
-           // var removeRole = await _userManager.RemoveFromRoleAsync(user, role); 
-           // if(removeRole.Succeeded) {  
-           //return true;
-           // }
+            // var removeRole = await _userManager.RemoveFromRoleAsync(user, role); 
+            // if(removeRole.Succeeded) {  
+            //return true;
+            // }
             return false;
         }
         public async Task<bool> RoleExist(string Role)
@@ -46,7 +40,7 @@ namespace Data.Repository.Implementation
         }
         public async Task<bool> ConfirmEmail(string token, ApplicationUser user)
         {
-           var result = await _userManager.ConfirmEmailAsync(user, token);
+            var result = await _userManager.ConfirmEmailAsync(user, token);
             if (result.Succeeded)
             {
                 return true;
@@ -57,7 +51,7 @@ namespace Data.Repository.Implementation
         public async Task<bool> DeleteUserByEmail(ApplicationUser user)
         {
             var result = await _userManager.DeleteAsync(user);
-            if(result.Succeeded)
+            if (result.Succeeded)
             {
                 return true;
             }
@@ -91,16 +85,16 @@ namespace Data.Repository.Implementation
             var totalPages = (int)Math.Ceiling((double)totalCount / perPageSize);
             var paginated = await getAllUser.Skip((pageNumber - 1) * perPageSize).Take(perPageSize).Select(User => new DisplayFindUserDTO
             {
-               UserName = User.UserName,
-               Email = User.Email,
-               FirstName = User.FirstName,
-               LastName = User.LastName,
-               PhoneNumber = User.PhoneNumber,
-               ProfilePicture = User.ProfilePicture,
-               Gender = User.Gender,
-               Id = User.Id
+                UserName = User.UserName,
+                Email = User.Email,
+                FirstName = User.FirstName,
+                LastName = User.LastName,
+                PhoneNumber = User.PhoneNumber,
+                ProfilePicture = User.ProfilePicture,
+                Gender = User.Gender,
+                Id = User.Id
             }).ToListAsync();
-            
+
             var result = new PaginatedUser
             {
                 CurrentPage = pageNumber,
@@ -110,19 +104,19 @@ namespace Data.Repository.Implementation
             };
             return result;
         }
-        public async Task<bool> CheckEmailConfirmed( ApplicationUser user)
+        public async Task<bool> CheckEmailConfirmed(ApplicationUser user)
         {
             var checkConfirm = await _userManager.IsEmailConfirmedAsync(user);
             return checkConfirm;
         }
-        public async Task<bool> CheckAccountPassword(ApplicationUser user,string password)
+        public async Task<bool> CheckAccountPassword(ApplicationUser user, string password)
         {
             var checkUserPassword = await _userManager.CheckPasswordAsync(user, password);
             return checkUserPassword;
         }
-        
 
-        public async Task<ResetPassword> ResetPassword(ApplicationUser user,ResetPassword resetPassword)
+
+        public async Task<ResetPassword> ResetPassword(ApplicationUser user, ResetPassword resetPassword)
         {
             var result = await _userManager.ResetPasswordAsync(user, resetPassword.Token, resetPassword.Password);
             if (result.Succeeded)

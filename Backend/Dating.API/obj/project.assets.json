@@ -3105,11 +3105,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\bsahe\\source\\repos\\DatingSite\\Dating.API\\Dating.API.csproj",
+      "projectUniqueName": "C:\\Users\\bsahe\\source\\repos\\DatingSite\\DatingSite\\Backend\\Dating.API\\Dating.API.csproj",
       "projectName": "Dating.API",
-      "projectPath": "C:\\Users\\bsahe\\source\\repos\\DatingSite\\Dating.API\\Dating.API.csproj",
+      "projectPath": "C:\\Users\\bsahe\\source\\repos\\DatingSite\\DatingSite\\Backend\\Dating.API\\Dating.API.csproj",
       "packagesPath": "C:\\Users\\bsahe\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\bsahe\\source\\repos\\DatingSite\\Dating.API\\obj\\",
+      "outputPath": "C:\\Users\\bsahe\\source\\repos\\DatingSite\\DatingSite\\Backend\\Dating.API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\bsahe\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -3126,11 +3126,11 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\bsahe\\source\\repos\\DatingSite\\Data\\Data.csproj": {
-              "projectPath": "C:\\Users\\bsahe\\source\\repos\\DatingSite\\Data\\Data.csproj"
+            "C:\\Users\\bsahe\\source\\repos\\DatingSite\\DatingSite\\Backend\\Data\\Data.csproj": {
+              "projectPath": "C:\\Users\\bsahe\\source\\repos\\DatingSite\\DatingSite\\Backend\\Data\\Data.csproj"
             },
-            "C:\\Users\\bsahe\\source\\repos\\DatingSite\\Model\\Model.csproj": {
-              "projectPath": "C:\\Users\\bsahe\\source\\repos\\DatingSite\\Model\\Model.csproj"
+            "C:\\Users\\bsahe\\source\\repos\\DatingSite\\DatingSite\\Backend\\Model\\Model.csproj": {
+              "projectPath": "C:\\Users\\bsahe\\source\\repos\\DatingSite\\DatingSite\\Backend\\Model\\Model.csproj"
             }
           }
         }

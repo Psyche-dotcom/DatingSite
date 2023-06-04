@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v6.0": {
       "Data/1.0.0": {
         "dependencies": {
+          "CloudinaryDotNet": "1.20.0",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "6.0.0",
           "Microsoft.EntityFrameworkCore.Sqlite": "6.0.0",
           "Microsoft.EntityFrameworkCore.Tools": "6.0.0",
@@ -15,6 +16,19 @@
         },
         "runtime": {
           "Data.dll": {}
+        }
+      },
+      "CloudinaryDotNet/1.20.0": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Html.Abstractions": "2.2.0",
+          "Microsoft.AspNetCore.Http.Abstractions": "2.2.0",
+          "Newtonsoft.Json": "13.0.1"
+        },
+        "runtime": {
+          "lib/netstandard2.0/CloudinaryDotNet.dll": {
+            "assemblyVersion": "1.20.0.0",
+            "fileVersion": "1.20.0.0"
+          }
         }
       },
       "Humanizer.Core/2.8.26": {
@@ -41,6 +55,40 @@
           "lib/net6.0/Microsoft.AspNetCore.Cryptography.KeyDerivation.dll": {
             "assemblyVersion": "6.0.0.0",
             "fileVersion": "6.0.21.52608"
+          }
+        }
+      },
+      "Microsoft.AspNetCore.Html.Abstractions/2.2.0": {
+        "dependencies": {
+          "System.Text.Encodings.Web": "6.0.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.Html.Abstractions.dll": {
+            "assemblyVersion": "2.2.0.0",
+            "fileVersion": "2.2.0.18316"
+          }
+        }
+      },
+      "Microsoft.AspNetCore.Http.Abstractions/2.2.0": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Http.Features": "2.2.0",
+          "System.Text.Encodings.Web": "6.0.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.Http.Abstractions.dll": {
+            "assemblyVersion": "2.2.0.0",
+            "fileVersion": "2.2.0.18316"
+          }
+        }
+      },
+      "Microsoft.AspNetCore.Http.Features/2.2.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Primitives": "6.0.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.Http.Features.dll": {
+            "assemblyVersion": "2.2.0.0",
+            "fileVersion": "2.2.0.18316"
           }
         }
       },
@@ -285,6 +333,14 @@
           }
         }
       },
+      "Newtonsoft.Json/13.0.1": {
+        "runtime": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {
+            "assemblyVersion": "13.0.0.0",
+            "fileVersion": "13.0.1.25517"
+          }
+        }
+      },
       "SQLitePCLRaw.bundle_e_sqlite3/2.0.6": {
         "dependencies": {
           "SQLitePCLRaw.core": "2.0.6",
@@ -439,6 +495,13 @@
       "serviceable": false,
       "sha512": ""
     },
+    "CloudinaryDotNet/1.20.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-pvWXU5PJ4yhqMzwEawi20ogkbtlX0FUP/7UOn5K/fFNSgZheTn6F9/fHpkssBfnEoQeIxauqo0cVpkyYFSzIvA==",
+      "path": "cloudinarydotnet/1.20.0",
+      "hashPath": "cloudinarydotnet.1.20.0.nupkg.sha512"
+    },
     "Humanizer.Core/2.8.26": {
       "type": "package",
       "serviceable": true,
@@ -459,6 +522,27 @@
       "sha512": "sha512-CcYIcGn/zJFY0zq84V4r9Xd4aQn2/+8tsiRBYnhS/LVgWNDq7EsWxmLJ+bXWBBdpTHA+IKvXTag9YElFKFHWYQ==",
       "path": "microsoft.aspnetcore.cryptography.keyderivation/6.0.0",
       "hashPath": "microsoft.aspnetcore.cryptography.keyderivation.6.0.0.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.Html.Abstractions/2.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Y4rs5aMEXY8G7wJo5S3EEt6ltqyOTr/qOeZzfn+hw/fuQj5GppGckMY5psGLETo1U9hcT5MmAhaT5xtusM1b5g==",
+      "path": "microsoft.aspnetcore.html.abstractions/2.2.0",
+      "hashPath": "microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.Http.Abstractions/2.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Nxs7Z1q3f1STfLYKJSVXCs1iBl+Ya6E8o4Oy1bCxJ/rNI44E/0f6tbsrVqAWfB7jlnJfyaAtIalBVxPKUPQb4Q==",
+      "path": "microsoft.aspnetcore.http.abstractions/2.2.0",
+      "hashPath": "microsoft.aspnetcore.http.abstractions.2.2.0.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.Http.Features/2.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ziFz5zH8f33En4dX81LW84I6XrYXKf9jg6aM39cM+LffN9KJahViKZ61dGMSO2gd3e+qe5yBRwsesvyqlZaSMg==",
+      "path": "microsoft.aspnetcore.http.features/2.2.0",
+      "hashPath": "microsoft.aspnetcore.http.features.2.2.0.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Identity.EntityFrameworkCore/6.0.0": {
       "type": "package",
@@ -613,6 +697,13 @@
       "sha512": "sha512-9+PnzmQFfEFNR9J2aDTfJGGupShHjOuGw4VUv+JB044biSHrnmCIMD+mJHmb2H7YryrfBEXDurxQ47gJZdCKNQ==",
       "path": "microsoft.extensions.primitives/6.0.0",
       "hashPath": "microsoft.extensions.primitives.6.0.0.nupkg.sha512"
+    },
+    "Newtonsoft.Json/13.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ppPFpBcvxdsfUonNcvITKqLl3bqxWbDCZIzDWHzjpdAHRFfZe0Dw9HmA0+za13IdyrgJwpkDTDA9fHaxOrt20A==",
+      "path": "newtonsoft.json/13.0.1",
+      "hashPath": "newtonsoft.json.13.0.1.nupkg.sha512"
     },
     "SQLitePCLRaw.bundle_e_sqlite3/2.0.6": {
       "type": "package",
