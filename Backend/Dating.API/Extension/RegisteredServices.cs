@@ -16,7 +16,9 @@ namespace Dating.API.Extension
             services.AddScoped<IAccountRepo, AccountRepo>();
             services.AddScoped<IAccountService, AccountService>();
             services.AddScoped<IGenerateJwt, GenerateJwt>();
+            services.AddScoped<IPayments, Payments>();
             services.AddScoped<ICloudinaryService, CloudinaryService>();
+            services.AddScoped<IPaymentRepo, PaymentRepo>();
             services.AddAutoMapper(typeof(ProjectProfile));
         }
     }

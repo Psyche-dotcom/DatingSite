@@ -1,7 +1,14 @@
 using Dating.API.Extension;
+using Dating.API.Service.Implementation;
+using Dating.API.Service.Interface;
 using System.Text.Json.Serialization;
+using Microsoft.Extensions.DependencyInjection;
+using Dating.API.Configuration;
+using Microsoft.Extensions.Configuration;
+
 
 var builder = WebApplication.CreateBuilder(args);
+var config = builder.Configuration;
 
 // Add services to the container.
 
@@ -12,6 +19,9 @@ builder.Services.AddControllers(option =>
 builder.Services.ConfigureLibrary(builder.Configuration);
 builder.Services.ConfigureDb(builder.Configuration);
 builder.Services.ConfigureServices(builder.Configuration);
+builder.Services.ConfigurePayment(config);
+
+
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
