@@ -109,11 +109,12 @@ namespace Dating.API.Service.Implementation
                 {
                     Id = OrderId
                 };
+                
 
                 var response = await _client.Execute(capture);
                 var order = response.Result<Order>();
-                bool IsComplete = order.Status == "COMPLETED";
-                if (IsComplete)
+                bool IsComplete = order.Status == "APPROVED";
+                if (IsComplete && _paymentdb.GetPaymentById(OrderId) == null)
                 {
                     var res = _paymentdb.AddPayments(order);
                 }

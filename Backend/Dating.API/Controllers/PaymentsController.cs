@@ -55,5 +55,12 @@ namespace Dating.API.Controllers
             var data = _paydb.DeactivatePayment(OrderId);
             return Ok(data);
         }
+
+        [HttpGet("get-payment-by-orderId")]
+        public async Task<IActionResult> GetPaymentByOrderId(string OrderId)
+        {
+            var data = _paydb.GetPaymentById(OrderId);
+            return Ok(data);
+        }
     }
 }
