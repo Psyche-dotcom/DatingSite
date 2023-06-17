@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "T9X/9LimhJdmOsuP8Dl0CU4j1rOcu+vAwIFUlaBD4YvhlI99w/q8dYkW3Wxh47DDNJ8tQV0OJAg2g2sDKP4Jyw==",
+  "dgSpecHash": "QJLUZOMeyZTToHhjSIfvRlvdMTgKPU3YYwgSr8UXYqzebEAUxaNh/BHI2Bh71g1W7qWoxk8CL24JE7HynQhURA==",
   "success": true,
   "projectFilePath": "C:\\Users\\bsahe\\source\\repos\\DatingSite\\DatingSite\\Backend\\Dating.API\\Dating.API.csproj",
   "expectedPackageFiles": [
@@ -88,6 +88,12 @@
     "C:\\Users\\bsahe\\.nuget\\packages\\system.text.json\\6.0.0\\system.text.json.6.0.0.nupkg.sha512"
   ],
   "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file C:\\Users\\bsahe\\source\\repos\\DatingSite\\DatingSite\\Backend\\Dating.API\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    },
     {
       "code": "NU1701",
       "level": "Warning",

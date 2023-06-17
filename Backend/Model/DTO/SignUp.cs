@@ -11,15 +11,16 @@ namespace Model.DTO
         public string LastName { get; set; }
         public string Location { get; set; }
         public int Age { get; set; }
-        //[Required]
-        //[EmailAddress]
-        //public string Email { get; set; }
+        public string UserName { get; set; }
+        [Required]
+        [EmailAddress]
+        public string Email { get; set; }
         [Required]
         [DataType(DataType.PhoneNumber)]
         public string PhoneNumber { get; set; } = string.Empty;
-        //[Required]
-        //[DataType(DataType.Password)]
-        //public string Password { get; set; }
+        [Required]
+        [DataType(DataType.Password)]
+        public string Password { get; set; }
         [Required]
         [Compare("Password")]
         [DataType(DataType.Password)]

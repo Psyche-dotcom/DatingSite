@@ -1,6 +1,5 @@
 ﻿using Model.DTO;
 using Model.Enitities;
-using System.ComponentModel.DataAnnotations;
 
 namespace Data.Repository.Interface
 {
@@ -8,15 +7,21 @@ namespace Data.Repository.Interface
     {
         Task<ApplicationUser> SignUpAsync(ApplicationUser user, string Password);
         Task<bool> CheckAccountPassword(ApplicationUser user, string password);
+        Task<bool> UpdateLoginStatus(ApplicationUser user);
+        Task<bool> UpdateLogoutStatus(ApplicationUser user);
+        Task<bool> UpdateUserStatusTaken(ApplicationUser user);
+        Task<bool> UpdateUserStatusNotTaken(ApplicationUser user);
         Task<bool> CheckEmailConfirmed(ApplicationUser user);
         Task<bool> AddRoleAsync(ApplicationUser user, string Role);
         Task<string> ForgotPassword(ApplicationUser user);
         Task<bool> ConfirmEmail(string token, ApplicationUser user);
-        Task<ResetPassword> ResetPassword(ApplicationUser user, ResetPassword resetPassword);
+        Task<bool> RemoveRoleAsync(ApplicationUser user, IList<string> role);
+        Task<ResetPassword> ResetPasswordAsync(ApplicationUser user, ResetPassword resetPassword);
         Task<bool> RoleExist(string Role);
-        Task<ApplicationUser> FindUserByEmailAsync(string email);
+        Task<ApplicationUser?> FindUserByEmailAsync(string email);
         Task<ApplicationUser> FindUserByIdAsync(string id);
-        Task<bool> UpdateUserInfo(string email, UpdateUserDto user);
+        Task<bool> UpdateUserInfo(ApplicationUser applicationUser);
+        Task<IList<string>> GetUserRoles(ApplicationUser user);
         Task<PaginatedUser> GetAllUser(int pageNumber, int perPageSize);
         Task<bool> DeleteUserByEmail(ApplicationUser user);
     }
