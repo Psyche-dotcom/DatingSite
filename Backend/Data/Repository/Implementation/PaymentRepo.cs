@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Data.Context;
 using Data.Repository.Interface;
+using Microsoft.EntityFrameworkCore;
 using Model.Enitities;
 using PayPalCheckoutSdk.Orders;
 
@@ -18,7 +19,10 @@ namespace Data.Repository.Implementation
         {
             _context = context;
         }
-
+        public async Task<Payments> GetPaymentById(string OrderId)
+        {
+            return await _context.Payments.FirstOrDefaultAsync(x => x.ReferenceNumber == OrderId);
+        }
         public Payments AddPayments(Order order)
         {
             try

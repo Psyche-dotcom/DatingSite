@@ -235,3 +235,8 @@ C:\Users\HP\source\repos\DatingSite\Backend\Dating.API\obj\Debug\net6.0\refint\D
 C:\Users\HP\source\repos\DatingSite\Backend\Dating.API\obj\Debug\net6.0\Dating.API.pdb
 C:\Users\HP\source\repos\DatingSite\Backend\Dating.API\obj\Debug\net6.0\Dating.API.genruntimeconfig.cache
 C:\Users\HP\source\repos\DatingSite\Backend\Dating.API\obj\Debug\net6.0\ref\Dating.API.dll
+C:\Users\bsahe\source\repos\DatingSite\DatingSite\Backend\Dating.API\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\bsahe\source\repos\DatingSite\DatingSite\Backend\Dating.API\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\bsahe\source\repos\DatingSite\DatingSite\Backend\Dating.API\bin\Debug\net6.0\PayPal.dll
+C:\Users\bsahe\source\repos\DatingSite\DatingSite\Backend\Dating.API\bin\Debug\net6.0\PayPalCheckoutSdk.dll
+C:\Users\bsahe\source\repos\DatingSite\DatingSite\Backend\Dating.API\bin\Debug\net6.0\PayPalHttp-Dotnet.dll
