@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "G/5Icg1CxGp2ZGyceGCjOKdkxVHS1nziLtEPljnkGBli16o1qb6tjAQRX6BQkArgjsU0Eo0HZ9XXyOaL/WIFfQ==",
+  "dgSpecHash": "aJorU+GeJU+axwF7IvCPzAgPsVh90oVEqKstNv3/Sr9+RdtIhpWcqZumkx+n41QtiNQsZypMayXWNq6mV0Pjyw==",
   "success": true,
   "projectFilePath": "C:\\Users\\bsahe\\source\\repos\\DatingSite\\DatingSite\\Backend\\Data\\Data.csproj",
   "expectedPackageFiles": [
@@ -37,6 +37,8 @@
     "C:\\Users\\bsahe\\.nuget\\packages\\mimekit\\3.2.0\\mimekit.3.2.0.nupkg.sha512",
     "C:\\Users\\bsahe\\.nuget\\packages\\netcore.mailkit\\2.1.0\\netcore.mailkit.2.1.0.nupkg.sha512",
     "C:\\Users\\bsahe\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
+    "C:\\Users\\bsahe\\.nuget\\packages\\paypalcheckoutsdk\\1.0.4\\paypalcheckoutsdk.1.0.4.nupkg.sha512",
+    "C:\\Users\\bsahe\\.nuget\\packages\\paypalhttp\\1.0.1\\paypalhttp.1.0.1.nupkg.sha512",
     "C:\\Users\\bsahe\\.nuget\\packages\\portable.bouncycastle\\1.9.0\\portable.bouncycastle.1.9.0.nupkg.sha512",
     "C:\\Users\\bsahe\\.nuget\\packages\\sqlitepclraw.bundle_e_sqlite3\\2.0.6\\sqlitepclraw.bundle_e_sqlite3.2.0.6.nupkg.sha512",
     "C:\\Users\\bsahe\\.nuget\\packages\\sqlitepclraw.core\\2.0.6\\sqlitepclraw.core.2.0.6.nupkg.sha512",
@@ -52,5 +54,12 @@
     "C:\\Users\\bsahe\\.nuget\\packages\\system.text.encodings.web\\6.0.0\\system.text.encodings.web.6.0.0.nupkg.sha512",
     "C:\\Users\\bsahe\\.nuget\\packages\\system.text.json\\6.0.0\\system.text.json.6.0.0.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file C:\\Users\\bsahe\\source\\repos\\DatingSite\\DatingSite\\Backend\\Data\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }
