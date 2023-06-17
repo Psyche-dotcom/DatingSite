@@ -1366,7 +1366,8 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
-          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "6.0.0"
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "6.0.0",
+          "NETCore.MailKit": "2.1.0"
         },
         "compile": {
           "bin/placeholder/Model.dll": {}

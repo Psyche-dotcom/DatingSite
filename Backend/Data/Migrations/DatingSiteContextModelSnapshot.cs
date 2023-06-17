@@ -41,6 +41,29 @@ namespace Data.Migrations
                         .HasDatabaseName("RoleNameIndex");
 
                     b.ToTable("AspNetRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "ee78a715-24ee-4926-b29f-fbad1632f55f",
+                            ConcurrencyStamp = "1",
+                            Name = "ADMIN",
+                            NormalizedName = "ADMIN"
+                        },
+                        new
+                        {
+                            Id = "f6100d85-5103-4d36-9342-37e45dbd554d",
+                            ConcurrencyStamp = "2",
+                            Name = "USER",
+                            NormalizedName = "USER"
+                        },
+                        new
+                        {
+                            Id = "a0a458e7-4a8e-493f-972e-bac6aac26009",
+                            ConcurrencyStamp = "3",
+                            Name = "CAMGIRL",
+                            NormalizedName = "CAMGIRL"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -153,6 +176,9 @@ namespace Data.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("INTEGER");
 
+                    b.Property<int>("Age")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasColumnType("TEXT");
@@ -171,7 +197,14 @@ namespace Data.Migrations
                     b.Property<int>("Gender")
                         .HasColumnType("INTEGER");
 
+                    b.Property<bool>("IsUserOnline")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Location")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
@@ -198,10 +231,17 @@ namespace Data.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("ProfilePicture")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("TEXT");
 
                     b.Property<bool>("TwoFactorEnabled")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("UserIsTaken")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("UserName")
@@ -229,12 +269,21 @@ namespace Data.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("ApplicationUserId")
+                    b.Property<string>("PaymentType")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ReferenceNumber")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ApplicationUserId");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Payments");
                 });
@@ -244,18 +293,19 @@ namespace Data.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("ApplicationUserId")
-                        .HasColumnType("TEXT");
-
                     b.Property<DateTime>("AvailableTime")
                         .HasColumnType("TEXT");
 
                     b.Property<bool>("IsTimeActive")
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("ApplicationUserId");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Timers");
                 });
@@ -313,16 +363,24 @@ namespace Data.Migrations
 
             modelBuilder.Entity("Model.Enitities.Payments", b =>
                 {
-                    b.HasOne("Model.Enitities.ApplicationUser", null)
+                    b.HasOne("Model.Enitities.ApplicationUser", "User")
                         .WithMany("Payments")
-                        .HasForeignKey("ApplicationUserId");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Model.Enitities.Timers", b =>
                 {
-                    b.HasOne("Model.Enitities.ApplicationUser", null)
+                    b.HasOne("Model.Enitities.ApplicationUser", "User")
                         .WithMany("Timers")
-                        .HasForeignKey("ApplicationUserId");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Model.Enitities.ApplicationUser", b =>

@@ -3,9 +3,6 @@ using Data.Repository.Interface;
 using Dating.API.Profiles;
 using Dating.API.Service.Implementation;
 using Dating.API.Service.Interface;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
-using System.Text;
 
 namespace Dating.API.Extension
 {
@@ -18,6 +15,9 @@ namespace Dating.API.Extension
             services.AddScoped<IGenerateJwt, GenerateJwt>();
             services.AddScoped<ICloudinaryService, CloudinaryService>();
             services.AddAutoMapper(typeof(ProjectProfile));
+            services.AddScoped<IEmailServices, EmailService>();
+            services.AddScoped<ICamGirlRepo , CamGirlRepo>();
+            services.AddScoped<ICamGirlService , CamGirlService>();
         }
     }
 }

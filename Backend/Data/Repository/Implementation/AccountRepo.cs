@@ -10,11 +10,11 @@ namespace Data.Repository.Implementation
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
-
         public AccountRepo(UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager)
         {
             _userManager = userManager;
             _roleManager = roleManager;
+
         }
         public async Task<bool> AddRoleAsync(ApplicationUser user, string Role)
         {
@@ -27,16 +27,67 @@ namespace Data.Repository.Implementation
         }
         public async Task<bool> RemoveRoleAsync(ApplicationUser user, IList<string> role)
         {
-            // var removeRole = await _userManager.RemoveFromRoleAsync(user, role); 
-            // if(removeRole.Succeeded) {  
-            //return true;
-            // }
+            var removeRole = await _userManager.RemoveFromRolesAsync(user, role);
+            if (removeRole.Succeeded)
+            {
+                return true;
+            }
             return false;
+        }
+        public async Task<IList<string>> GetUserRoles(ApplicationUser user)
+        {
+            var getRoles = await _userManager.GetRolesAsync(user);
+            if (getRoles != null)
+            {
+                return getRoles;
+            }
+            return null;
         }
         public async Task<bool> RoleExist(string Role)
         {
             var check = await _roleManager.RoleExistsAsync(Role);
             return check;
+        }
+        public async Task<bool> UpdateLoginStatus(ApplicationUser user)
+        {
+            user.IsUserOnline = true;
+            var updateStatus = await _userManager.UpdateAsync(user);
+            if (updateStatus.Succeeded)
+            {
+                return true;
+            }
+            return false;
+        }
+        public async Task<bool> UpdateLogoutStatus(ApplicationUser user)
+        {
+            user.IsUserOnline = false;
+            var updateStatus = await _userManager.UpdateAsync(user);
+            if (updateStatus.Succeeded)
+            {
+                return true;
+            }
+            return false;
+        }
+        public async Task<bool> UpdateUserStatusTaken(ApplicationUser user)
+        {
+            user.UserIsTaken = true;
+            var updateStatus = await _userManager.UpdateAsync(user);
+            if (updateStatus.Succeeded)
+            {
+                return true;
+            }
+            return false;
+        }
+       
+        public async Task<bool> UpdateUserStatusNotTaken(ApplicationUser user)
+        {
+            user.UserIsTaken = false;
+            var updateStatus = await _userManager.UpdateAsync(user);
+            if (updateStatus.Succeeded)
+            {
+                return true;
+            }
+            return false;
         }
         public async Task<bool> ConfirmEmail(string token, ApplicationUser user)
         {
@@ -58,9 +109,13 @@ namespace Data.Repository.Implementation
             return false;
         }
 
-        public async Task<ApplicationUser> FindUserByEmailAsync(string email)
+        public async Task<ApplicationUser?> FindUserByEmailAsync(string email)
         {
             var findUser = await _userManager.FindByEmailAsync(email);
+            if (findUser == null)
+            {
+                return null;
+            }
             return findUser;
         }
 
@@ -75,7 +130,6 @@ namespace Data.Repository.Implementation
             var token = await _userManager.GeneratePasswordResetTokenAsync(user);
             return token;
         }
-
         public async Task<PaginatedUser> GetAllUser(int pageNumber, int perPageSize)
         {
             var getAllUser = _userManager.Users;
@@ -114,9 +168,7 @@ namespace Data.Repository.Implementation
             var checkUserPassword = await _userManager.CheckPasswordAsync(user, password);
             return checkUserPassword;
         }
-
-
-        public async Task<ResetPassword> ResetPassword(ApplicationUser user, ResetPassword resetPassword)
+        public async Task<ResetPassword> ResetPasswordAsync(ApplicationUser user, ResetPassword resetPassword)
         {
             var result = await _userManager.ResetPasswordAsync(user, resetPassword.Token, resetPassword.Password);
             if (result.Succeeded)
@@ -137,9 +189,14 @@ namespace Data.Repository.Implementation
 
         }
 
-        public Task<bool> UpdateUserInfo(string email, UpdateUserDto user)
+        public async Task<bool> UpdateUserInfo(ApplicationUser applicationUser)
         {
-            throw new NotImplementedException();
+            var updateUserInfo = await _userManager.UpdateAsync(applicationUser);
+            if (updateUserInfo.Succeeded)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }
