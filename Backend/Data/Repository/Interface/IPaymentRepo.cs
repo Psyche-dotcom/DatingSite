@@ -10,8 +10,9 @@ namespace Data.Repository.Interface
 {
     public interface IPaymentRepo
     {
-        Payments AddPayments(Order order);
+        Task<Payments> AddPayments(Order order);
         Task<bool> IsPaymentActive(string orderId);
-        bool DeactivatePayment(string orderId);
+        Task<bool> DeactivatePayment(string orderId);
+        Task<Payments> GetPaymentById(string OrderId);
     }
 }

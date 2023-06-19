@@ -59,7 +59,7 @@ namespace Dating.API.Controllers
         [HttpGet("get-payment-by-orderId")]
         public async Task<IActionResult> GetPaymentByOrderId(string OrderId)
         {
-            var data = _paydb.GetPaymentById(OrderId);
+            var data = await _paydb.GetPaymentById(OrderId);
             return Ok(data);
         }
     }
