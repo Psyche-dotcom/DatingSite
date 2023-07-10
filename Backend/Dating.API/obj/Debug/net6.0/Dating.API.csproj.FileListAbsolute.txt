@@ -235,3 +235,8 @@ C:\Users\HP\source\repos\DatingSite\Backend\Dating.API\obj\Debug\net6.0\refint\D
 C:\Users\HP\source\repos\DatingSite\Backend\Dating.API\obj\Debug\net6.0\Dating.API.pdb
 C:\Users\HP\source\repos\DatingSite\Backend\Dating.API\obj\Debug\net6.0\Dating.API.genruntimeconfig.cache
 C:\Users\HP\source\repos\DatingSite\Backend\Dating.API\obj\Debug\net6.0\ref\Dating.API.dll
+C:\Users\HP\source\repos\DatingSite\Backend\Dating.API\obj\Debug\net6.0\staticwebassets\msbuild.Dating.API.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\HP\source\repos\DatingSite\Backend\Dating.API\obj\Debug\net6.0\staticwebassets\msbuild.build.Dating.API.props
+C:\Users\HP\source\repos\DatingSite\Backend\Dating.API\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.Dating.API.props
+C:\Users\HP\source\repos\DatingSite\Backend\Dating.API\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.Dating.API.props
+C:\Users\HP\source\repos\DatingSite\Backend\Dating.API\obj\Debug\net6.0\staticwebassets.pack.json
