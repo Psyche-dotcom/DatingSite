@@ -17,6 +17,23 @@ body {
     background: linear-gradient(130deg, #ff7af5 0%, #5961f9 100%);
   }
 }
+.text-h4 {
+  font-size: 20px;
+  color: #000;
+  font-weight: 600;
+}
+
+.text-h5 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #000;
+}
+.text-h6 {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #000;
+}
+
 .icon-pink {
   filter: opacity(0.9) drop-shadow(0 0 0 #f9096c);
 }
@@ -29,7 +46,11 @@ body {
   flex-direction: column;
   height: 100vh;
 }
-
+.icon {
+  background: #e1e3ea;
+  padding: 8px;
+  border-radius: 4px;
+}
 .landing-bgimage {
   background-image: url(https://uk.luckycrush.live/assets/img/people-mozaic.png);
   background-size: cover;
@@ -64,11 +85,11 @@ body {
   background-color: #fff;
 }
 .modal-header {
-  font-size: 30px;
+  font-size: 24px;
   font-weight: 600;
   text-align: center;
   color: #000;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
 }
 .sub-class {
   padding: 0px 4px;
@@ -94,6 +115,31 @@ body {
 }
 .sub-icon:hover {
   display: block;
+}
+.tabble td,
+.tabble th {
+  padding: 12px;
+  text-align: start;
+}
+
+.sidebar-lists li {
+  margin-bottom: 24px;
+}
+
+.sidebar-lists h5 {
+  color: #000;
+}
+
+.sidebar_icon {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sidebar__icon {
+  background: #f3f6f9;
+  border-radius: 8px;
+  padding: 16px;
 }
 /* :root {
   --max-width: 1100px;

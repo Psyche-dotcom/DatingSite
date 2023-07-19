@@ -17,7 +17,7 @@ export default function PurchaseTime({ onChildValue }) {
   };
   return (
     <>
-      <CustomModal open={signUpSetting} onClose={setSignUpSetting}>
+      {/* <CustomModal open={signUpSetting} onClose={setSignUpSetting}>
         <button
           onClick={handleCloseSignUpSettings}
           className="absolute right-[-19px] top-[-19px] bg-white rounded-full p-2"
@@ -69,14 +69,14 @@ export default function PurchaseTime({ onChildValue }) {
               title="approved icons"
               height={24}
               width={24}
-              className="mr-3  sub-icon"
+              className="mr-3 sub-icon"
             />
             <p className="mr-auto">90 minutes</p>
             <p>99.99 USD</p>
           </button>
           <p className="text-xl text-black">Let's Encrypt</p>
         </div>
-      </CustomModal>
+      </CustomModal> */}
     </>
   );
 }
