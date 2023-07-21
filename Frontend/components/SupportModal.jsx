@@ -15,11 +15,8 @@ const SupportModal = ({ onValueSupportChange }) => {
 
   return (
     <div className=" border-b-2 py-2 md:border-0">
-      <div className="modal-overlay">
-        <div
-          className="modal-content relative bg-white p-4 rounded-lg text-center"
-          style={{ width: "400px", maxHeight: "350px" }}
-        >
+      <div className="modal-overlay px-6">
+        <div className="modal-content relative bg-white p-4 rounded-lg text-center">
           <h1 className="modal-header">Visitor settings</h1>
           <p className="text-gray-700 mb-16">
             You have questions or need help? Contact us at any time at
@@ -47,7 +44,7 @@ const SupportModal = ({ onValueSupportChange }) => {
         </div>
       </div>
 
-      <style jsx>{`
+      {/* <style jsx>{`
         .modal-overlay {
           position: fixed;
           top: 0;
@@ -73,7 +70,7 @@ const SupportModal = ({ onValueSupportChange }) => {
           font-weight: bold;
           cursor: pointer;
         }
-      `}</style>
+      `}</style> */}
     </div>
   );
 };

@@ -1,21 +1,19 @@
 import { useState } from "react";
 import Image from "next/image";
-import SignLogModal from "./SignLogModal";
+import SignLogModal from "./ForgotPasswordModal";
 
 const PurchaseTimeModal = ({ onValueChange }) => {
-  const [isOpen, SetIsOpen] = useState();
+  const value = false;
   const closeModal = () => {
-    // setIsOpen(false);
-    const value = false;
     onValueChange(value);
   };
 
   return (
     <div className=" border-b-2 py-2 md:border-0">
-      <div className="modal-overlay">
+      <div className="modal-overlay px-6">
         <div
-          className="modal-content relative bg-white py-4 rounded-lg"
-          style={{ width: "400px" }}
+          className="modal-content relative bg-white py-4 rounded-lg "
+          style={{ height: "75%" }}
         >
           <div className="pb-10 px-10 bg-white rounded-lg text-center">
             <h4 className="modal-header">
@@ -80,35 +78,6 @@ const PurchaseTimeModal = ({ onValueChange }) => {
           </button>
         </div>
       </div>
-      {/* )} */}
-      <style jsx>{`
-        .modal-overlay {
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          background-color: rgba(0, 0, 0, 0.4);
-        }
-
-        .modal-content {
-          background-color: #fefefe;
-
-          border: 1px solid #888;
-          max-width: 500px;
-        }
-
-        .close {
-          color: #aaa;
-          float: right;
-          font-size: 28px;
-          font-weight: bold;
-          cursor: pointer;
-        }
-      `}</style>
     </div>
   );
 };

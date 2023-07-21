@@ -29,10 +29,10 @@ export default function SignupLoginFemale({
 
   return (
     <>
-      <div className="modal-overlay">
+      <div className="modal-overlay px-6">
         <div
           className="modal-content bg-white rounded-lg relative "
-          style={{ width: "400px" }}
+          style={{ width: "25rem", height: "75%" }}
         >
           <div
             className="flex text-center mb-10"
@@ -69,7 +69,7 @@ export default function SignupLoginFemale({
             </svg>
           </button>
           {loginF && (
-            <div className=" pb-10">
+            <div className="px-10 pb-10">
               <form className="register">
                 <div className="mb-4">
                   <label for="email" className="mb-3">
@@ -98,7 +98,7 @@ export default function SignupLoginFemale({
           )}
         </div>
 
-        <style jsx>{`
+        {/* <style jsx>{`
           .modal-overlay {
             position: fixed;
             top: 0;
@@ -125,7 +125,7 @@ export default function SignupLoginFemale({
             font-weight: bold;
             cursor: pointer;
           }
-        `}</style>
+        `}</style> */}
       </div>
     </>
   );

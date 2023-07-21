@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Link from "next/link";
-import SignLogModal from "./SignLogModal";
+import SignLogModal from "./ForgotPasswordModal";
 import PurchaseTimeModal from "./PurchaseTimeModal";
 
 const AuthChatting = () => {
@@ -24,34 +24,6 @@ const AuthChatting = () => {
         Start chatting Auth
       </button>
       {isOpen && <PurchaseTimeModal onValueChange={handleValueChange} />}
-      <style jsx>{`
-        .modal-overlay {
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          background-color: rgba(0, 0, 0, 0.4);
-        }
-
-        .modal-content {
-          background-color: #fefefe;
-
-          border: 1px solid #888;
-          max-width: 500px;
-        }
-
-        .close {
-          color: #aaa;
-          float: right;
-          font-size: 28px;
-          font-weight: bold;
-          cursor: pointer;
-        }
-      `}</style>
     </div>
   );
 };

@@ -9,11 +9,8 @@ const SettingsModal = ({ onChangeSettingModal }) => {
 
   return (
     <div className=" border-b-2 py-2 md:border-0">
-      <div className="modal-overlay">
-        <div
-          className="modal-content relative bg-white p-4 rounded-lg text-center"
-          style={{ width: "400px", maxHeight: "350px" }}
-        >
+      <div className="modal-overlay p-6">
+        <div className="modal-content relative bg-white p-4 rounded-lg text-center ">
           <h1 className="modal-header">Visitor settings</h1>
           <p className="text-gray-700 mb-8">
             On LuckyCrush, men are connected with random women, and women with
@@ -50,7 +47,7 @@ const SettingsModal = ({ onChangeSettingModal }) => {
           </button>
         </div>
       </div>
-      <style jsx>{`
+      {/* <style jsx>{`
         .modal-overlay {
           position: fixed;
           top: 0;
@@ -65,7 +62,7 @@ const SettingsModal = ({ onChangeSettingModal }) => {
 
         .modal-content {
           background-color: #fefefe;
-
+          justify-self:center
           border: 1px solid #888;
           max-width: 500px;
         }
@@ -77,8 +74,7 @@ const SettingsModal = ({ onChangeSettingModal }) => {
           font-weight: bold;
           cursor: pointer;
         }
-      `}</style>
-      ;
+      `}</style> */}
     </div>
   );
 };

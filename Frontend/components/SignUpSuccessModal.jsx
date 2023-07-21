@@ -18,7 +18,7 @@ const SettingsModal = () => {
         <div className="modal-overlay">
           <div
             className="modal-content relative bg-white rounded-lg"
-            style={{ width: "400px", height: "350px" }}
+            style={{ height: "75%" }}
           >
             <button
               onClick={closeModal}
@@ -95,7 +95,7 @@ const SettingsModal = () => {
         </div>
       )}
 
-      <style jsx>{`
+      {/* <style jsx>{`
         .modal-overlay {
           position: fixed;
           top: 0;
@@ -122,7 +122,7 @@ const SettingsModal = () => {
           font-weight: bold;
           cursor: pointer;
         }
-      `}</style>
+      `}</style> */}
     </div>
   );
 };

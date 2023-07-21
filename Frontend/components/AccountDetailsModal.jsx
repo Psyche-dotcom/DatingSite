@@ -1,17 +1,17 @@
 import { useState } from "react";
 import Link from "next/link";
 
-const AccountDetailsModal = ({ onValueSupportChange }) => {
+const AccountDetailsModal = ({ onValueAccDetailsChange }) => {
   const closeModal = () => {
     const value = false;
-    onValueSupportChange(value);
+    onValueAccDetailsChange(value);
   };
 
   return (
     <div className="modal-overlay">
       <div
         className="modal-content relative bg-white rounded-lg"
-        style={{ width: "400px", maxHeight: "350px" }}
+        style={{ height: "75%" }}
       >
         <button
           onClick={closeModal}
@@ -39,7 +39,7 @@ const AccountDetailsModal = ({ onValueSupportChange }) => {
             On LuckyCrush, men are connected with random women, and women with
             random men. This member account is a male member account. Was it a
             mistake?{" "}
-            <Link href="/" className="text-pink underline pr-1">
+            <Link href="#" className="text-pink underline pr-1">
               Click here
             </Link>
             Click here to log out and reset your gender settings

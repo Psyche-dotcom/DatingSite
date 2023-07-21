@@ -4,6 +4,7 @@ import CustomModal from "./CustomModal";
 import { useState } from "react";
 import Link from "next/link";
 import SettingsModal from "./SettingsModal";
+import AccountDetailsModal from "./AccountDetailsModal";
 
 function AccountDropdown({ onClose }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -45,7 +46,9 @@ function AccountDropdown({ onClose }) {
           <MenuItem onClick={handleClose}>Log out</MenuItem>
         </div>
       </Menu>
-      {isOpen && <SettingsModal onChangeSettingModal={handleSettingsvalue} />}
+      {isOpen && (
+        <AccountDetailsModal onValueAccDetailsChange={handleSettingsvalue} />
+      )}
     </div>
   );
 }

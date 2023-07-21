@@ -3,11 +3,17 @@ import Image from "next/image";
 import { useState } from "react";
 import CustomModal from "./CustomModal";
 
-export default function SignupLogin({ log, sign, onValueSignChange }) {
+export default function SignupLogin({
+  log,
+  sign,
+  onValueSignChange,
+  onValueForgotChange,
+}) {
+  const value = false;
+  const showForgot = true;
   const [login, setLogin] = useState(log);
   const [signup, setSignup] = useState(sign);
-  // const [signUpSetting, setSignUpSetting] = useState(false);
-  const [isForgotOpen, setIsForgotOpen] = useState(false);
+  // const [isForgotOpen, setIsForgotOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const showLogin = () => {
     setSignup(false);
@@ -20,24 +26,25 @@ export default function SignupLogin({ log, sign, onValueSignChange }) {
   };
   const openModal = (e) => {
     e.preventDefault();
+    onValueSignChange(value);
   };
   const closeModal = () => {
     setIsOpen(false);
-    const value = false;
     onValueSignChange(value);
   };
 
   const handleIsForgotOpen = (e) => {
-    setIsForgotOpen(true);
+    onValueForgotChange(showForgot);
+    onValueSignChange(value);
     e.preventDefault();
   };
 
   return (
     <div className=" border-b-2 py-2 md:border-0">
-      <div className="modal-overlay">
+      <div className="modal-overlay px-6">
         <div
           className="modal-content bg-white rounded-lg relative"
-          // style={{ maxWidth: "400px" }}
+          style={{ height: "75%" }}
         >
           <div
             className="flex text-center mb-10"
@@ -75,8 +82,8 @@ export default function SignupLogin({ log, sign, onValueSignChange }) {
           </button>
           {signup && (
             <div
-              className="px-10 pb-10 m-auto overflow-scroll"
-              style={{ width: "400px", maxHeight: "350px" }}
+              className="px-10 pb-10 m-auto overflow-scroll "
+              style={{ height: "75%" }}
             >
               <form className="register text-start">
                 <div className="mb-4">
@@ -135,8 +142,8 @@ export default function SignupLogin({ log, sign, onValueSignChange }) {
           )}
           {login && (
             <div
-              className=" pb-10 px-10 m-auto text-start"
-              style={{ width: "400px" }}
+              className=" pb-10 px-10 m-auto text-start overflow-scroll"
+              style={{ height: "75%" }}
             >
               <form className="register">
                 <div className="mb-4">
@@ -157,67 +164,13 @@ export default function SignupLogin({ log, sign, onValueSignChange }) {
                 >
                   Forgot Password
                 </button>
+                <button
+                  className="rounded-md bg-pink text-white font-extrabold py-4 px-10 mb-4 block"
+                  type="submit"
+                >
+                  Login
+                </button>
               </form>
-              {/* {isForgotOpen && (
-                <div className="modal-overlay">
-                  <div
-                    className="modal-content relative bg-white rounded-lg"
-                    style={{ width: "400px", height: "350px" }}
-                  >
-                    <button
-                      onClick={closeModal}
-                      className="absolute right-[-19px] top-[-19px] bg-white rounded-full p-2"
-                    >
-                      <svg
-                        fill="#f9096c"
-                        width="20px"
-                        height="20px"
-                        viewBox="0 0 200 200"
-                        data-name="Layer 1"
-                        id="Layer_1"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <title />
-                        <path d="M114,100l49-49a9.9,9.9,0,0,0-14-14L100,86,51,37A9.9,9.9,0,0,0,37,51l49,49L37,149a9.9,9.9,0,0,0,14,14l49-49,49,49a9.9,9.9,0,0,0,14-14Z" />
-                      </svg>
-                    </button>
-
-                    <div className="pb-10 px-10 bg-white rounded-lg pt-10">
-                      <h4 className="text-2xl text-black text-center mb-10">
-                        Forgot password
-                      </h4>
-                      <p>
-                        What is the email address associated with your account
-                      </p>
-                      <form className="register">
-                        <div className="mb-4">
-                          <label for="email" className="mb-3">
-                            Email
-                          </label>
-                          <input
-                            type="text"
-                            placeholder="Email"
-                            className="w-full"
-                          />
-                        </div>
-
-                        <button
-                          className="rounded-md bg-pink text-white font-extrabold py-4 px-10 mb-4"
-                          type="submit"
-                        >
-                          Send
-                        </button>
-                      </form>
-                    </div>
-                  </div>
-                </div>
-              )} */}
-              <button
-                className="rounded-md bg-pink text-white font-extrabold py-4 px-10 mb-4 block"
-                type="submit"
-              >
-                Login
-              </button>
               {/* </form> */}
               <button className="text-pink underline" onClick={showSignup}>
                 Create an account
@@ -225,7 +178,7 @@ export default function SignupLogin({ log, sign, onValueSignChange }) {
             </div>
           )}
         </div>
-        <style jsx>{`
+        {/* <style jsx>{`
           .modal-overlay {
             position: fixed;
             top: 0;
@@ -241,7 +194,7 @@ export default function SignupLogin({ log, sign, onValueSignChange }) {
           .modal-content {
             background-color: #fefefe;
             border: 1px solid #888;
-            max-width: 500px;
+            max-width: 400px;
           }
 
           .close {
@@ -251,7 +204,7 @@ export default function SignupLogin({ log, sign, onValueSignChange }) {
             font-weight: bold;
             cursor: pointer;
           }
-        `}</style>
+        `}</style> */}
       </div>
     </div>
   );
