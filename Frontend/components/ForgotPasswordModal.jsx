@@ -31,10 +31,7 @@ const ForgotPasswordModal = ({ onValueForgotClose }) => {
                 <input type="text" placeholder="Email" className="w-full" />
               </div>
 
-              <button
-                className="rounded-md bg-pink text-white font-extrabold py-4 px-10 mb-4"
-                type="submit"
-              >
+              <button className="btn-custom" type="submit">
                 Send
               </button>
             </form>

@@ -36,16 +36,10 @@ const SignupSuccessModal = ({ onValueCloseSuccessSignup }) => {
           </div>
           <p className="mb-2">Can't find our email?</p>
 
-          <button
-            className="rounded-md bg-pink text-white font-extrabold py-4 px-10 mb-4"
-            type="submit"
-          >
+          <button className="btn-custom" type="submit">
             Resend activation link!
           </button>
-          <button
-            className="rounded-md bg-pink text-white font-extrabold py-4 px-10 mb-4"
-            type="submit"
-          >
+          <button className="btn-custom" type="submit">
             I will do this later
           </button>
           <p className="mb-2">OR</p>
@@ -65,10 +59,7 @@ const SignupSuccessModal = ({ onValueCloseSuccessSignup }) => {
                 className="w-full"
               />
             </div>
-            <button
-              className="rounded-md bg-pink text-white font-extrabold py-4 px-10 mb-4"
-              type="submit"
-            >
+            <button className="btn-custom" type="submit">
               Save
             </button>
           </form>

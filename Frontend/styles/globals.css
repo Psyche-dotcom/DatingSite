@@ -17,6 +17,11 @@ body {
     background: linear-gradient(130deg, #ff7af5 0%, #5961f9 100%);
   }
 }
+.home-image {
+  border-radius: 50%;
+  background: #fff;
+  padding: 2rem;
+}
 .text-h4 {
   font-size: 20px;
   color: #000;
@@ -120,6 +125,7 @@ body {
   border-radius: 8px;
   color: #fff;
   font-weight: 600;
+  font-size: 1.1rem;
   padding: 1rem 2rem;
   margin-bottom: 1rem;
 }

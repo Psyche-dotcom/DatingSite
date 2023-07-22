@@ -1,30 +1,24 @@
 import React, { useState, useEffect } from "react";
-import CustomDropdown from "@/components/CustomDropdown";
-import AccountDropdown from "@/components/AccountDropdown";
-import BalanceDropDown from "@/components/BalanceDropDown";
+import CustomDropdown from "./CustomDropdown";
+import AccountDropdown from "./AccountDropdown";
+import BalanceDropDown from "./BalanceDropDown";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faUser, faTimes } from "@fortawesome/free-solid-svg-icons";
-
-import SettingsModal from "@/components/SettingsModal";
-
-import SupportModal from "@/components/SupportModal";
-import SignUpModal from "@/components/SignUpModal";
-import ClockBalanceDropDown from "@/components/ClockModal";
-import AuthChatting from "@/components/AuthChatting";
-import SelectInputForm from "@/components/SelectInputForm";
-import SignupLogin from "@/components/SignupLogin";
+import SettingsModal from "./SettingsModal";
+import SupportModal from "./SupportModal";
+import SignUpModal from "./SignUpModal";
+import ClockBalanceDropDown from "./ClockModal";
+import AuthChatting from "./AuthChatting";
+import SelectInputForm from "./SelectInputForm";
+import SignupLogin from "./SignupLogin";
 import IframeComponent from "@/components/IFrame";
-import SignupLoginFemale from "@/components/SignupLoginFemale";
-import SignupFemale from "@/components/SignupFemale";
-import ForgotPasswordModal from "@/components/ForgotPasswordModal";
-import SignupSuccessModal from "@/components/SignUpSuccessModal";
+import ForgotPasswordModal from "./ForgotPasswordModal";
+import SignupSuccessModal from "./SignUpSuccessModal";
 
-export default function Herosection() {
+export default function HerosectionMale() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [showSignLogModal, setShowSignLogModal] = useState(false);
-  const [showFemaleLogin, setShowFemaleLogin] = useState(false);
-  const [showSignupFemale, setShowSignupFemale] = useState(false);
   const [showSupportModal, setShowSupportModal] = useState(false);
   const [showForgotModal, setShowForgotModal] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
@@ -32,8 +26,6 @@ export default function Herosection() {
   const [showSignupSuccess, setShowSignupSuccess] = useState(false);
   const [login, setLogin] = useState(false);
   const [signup, setSignup] = useState(false);
-  const [loginF, setLoginF] = useState(false);
-  const [signupF, setSignupF] = useState(false);
 
   const handleClose = () => {
     setAnchorEl(null);
@@ -64,13 +56,6 @@ export default function Herosection() {
     setShowSignLogModal(true);
     setIsOpen(false);
   };
-  const handleLoginF = () => {
-    setLoginF(true);
-    setSignupF(false);
-
-    setShowFemaleLogin(true);
-    setIsOpen(false);
-  };
   const handleSignUp = () => {
     setLogin(false);
     setSignup(true);
@@ -89,12 +74,7 @@ export default function Herosection() {
   const handleClosedChange = (value) => {
     setShowSignupModal(value);
   };
-  const handleFemaleValueChange = (value) => {
-    setShowFemaleLogin(value);
-  };
-  const handleFemaleValueChangePopup = (val) => {
-    setShowSignupFemale(val);
-  };
+
   const handleCloseSignChange = (val) => {
     setShowSignupFemale(val);
   };
@@ -125,7 +105,7 @@ export default function Herosection() {
       className="view-page md:mb-10 text-center md:pb-12 md:pt-12"
       id="element1"
     >
-      <h4 className=" text-4xl text-black mb-10 hidden md:block">
+      <h4 className="text-4xl text-black mb-10 hidden md:block">
         Uk<span className="font-semibold">Crush</span>
       </h4>
 
@@ -163,12 +143,7 @@ export default function Herosection() {
                     >
                       SignUp
                     </button>
-                    <button
-                      onClick={handleLoginF}
-                      className="block border-b-2 py-2 md:border-0 w-full"
-                    >
-                      LoginF
-                    </button>
+
                     <button
                       onClick={openSettings}
                       className="border-b-2 py-2 md:border-0"
@@ -231,14 +206,7 @@ export default function Herosection() {
           onValueSignupSuccessChange={handleSignupSuccessChange}
         />
       )}
-      {showFemaleLogin && (
-        <SignupLoginFemale
-          logF={loginF}
-          signF={signupF}
-          onValueFemaleSignChange={handleFemaleValueChange}
-          onValueFemaleSignupChanged={handleFemaleValueChangePopup}
-        />
-      )}
+
       {showForgotModal && (
         <ForgotPasswordModal onValueForgotClose={handleValueForgotClose} />
       )}
@@ -277,12 +245,7 @@ export default function Herosection() {
               >
                 SignUp
               </button>
-              <button
-                onClick={handleLoginF}
-                className="block border-b-2 py-2 md:border-0 w-full"
-              >
-                LoginF
-              </button>
+
               <AccountDropdown
                 anchorEl={anchorEl}
                 onClose={handleDropdownClose}
@@ -291,9 +254,7 @@ export default function Herosection() {
             </div>
           </div>
         </nav>
-        {showSignupFemale && (
-          <SignupFemale onValueCloseSignChange={handleCloseSignChange} />
-        )}
+
         {showSignupSuccess && (
           <SignupSuccessModal
             onValueCloseSuccessSignup={handleCloseSuccessSignup}

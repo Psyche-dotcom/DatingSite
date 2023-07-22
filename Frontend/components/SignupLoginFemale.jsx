@@ -15,7 +15,6 @@ export default function SignupLoginFemale({
     setSignupF(false);
     setLoginF(true);
   };
-
   const showSignup = () => {
     setSignupF(true);
     setLoginF(false);
@@ -28,7 +27,6 @@ export default function SignupLoginFemale({
     const value = false;
     onValueFemaleSignChange(value);
   };
-
   return (
     <>
       <div className="modal-overlay px-6">

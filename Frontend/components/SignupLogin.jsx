@@ -70,7 +70,7 @@ export default function SignupLogin({
           </button>
           {signup && (
             <div
-              className="pd-sm m-auto overflow-scroll"
+              className="pd-sm m-auto overflow-scroll overflow-x-hidden"
               style={{ height: "75%" }}
             >
               <form className="register text-start">
@@ -130,7 +130,7 @@ export default function SignupLogin({
           )}
           {login && (
             <div
-              className="pd-sm m-auto text-start overflow-scroll"
+              className="pd-sm m-auto text-start overflow-scroll overflow-x-hidden"
               style={{ height: "75%" }}
             >
               <form className="register">

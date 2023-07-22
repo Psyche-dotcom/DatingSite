@@ -1,25 +1,23 @@
 import React, { useState, useEffect } from "react";
-import CustomDropdown from "@/components/CustomDropdown";
-import AccountDropdown from "@/components/AccountDropdown";
-import BalanceDropDown from "@/components/BalanceDropDown";
+import CustomDropdown from "./CustomDropdown";
+import AccountDropdown from "./AccountDropdown";
+import BalanceDropDown from "./BalanceDropDown";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faUser, faTimes } from "@fortawesome/free-solid-svg-icons";
+import SettingsModal from "./SettingsModal";
+import SupportModal from "./SupportModal";
+import SignUpModal from "./SignUpModal";
+import ClockBalanceDropDown from "./ClockModal";
+import AuthChatting from "./AuthChatting";
+import SelectInputForm from "./SelectInputForm";
+// import SignupLogin from "./SignupLogin";
+import IframeComponent from "./IFrame";
+import SignupLoginFemale from "./SignupLoginFemale";
+import SignupFemale from "./SignupFemale";
+import ForgotPasswordModal from "./ForgotPasswordModal";
+import SignupSuccessModal from "./SignUpSuccessModal";
 
-import SettingsModal from "@/components/SettingsModal";
-
-import SupportModal from "@/components/SupportModal";
-import SignUpModal from "@/components/SignUpModal";
-import ClockBalanceDropDown from "@/components/ClockModal";
-import AuthChatting from "@/components/AuthChatting";
-import SelectInputForm from "@/components/SelectInputForm";
-import SignupLogin from "@/components/SignupLogin";
-import IframeComponent from "@/components/IFrame";
-import SignupLoginFemale from "@/components/SignupLoginFemale";
-import SignupFemale from "@/components/SignupFemale";
-import ForgotPasswordModal from "@/components/ForgotPasswordModal";
-import SignupSuccessModal from "@/components/SignUpSuccessModal";
-
-export default function Herosection() {
+export default function HerosectionFemale() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [showSignLogModal, setShowSignLogModal] = useState(false);
@@ -150,19 +148,19 @@ export default function Herosection() {
                   <nav className="md:hidden bg-white text-black side-bar">
                     <SelectInputForm />
 
-                    <button
+                    {/* <button
                       onClick={handleLogin}
                       className="block border-b-2 py-2 md:border-0 w-full"
                     >
                       Login
-                    </button>
+                    </button> */}
 
-                    <button
+                    {/* <button
                       onClick={handleSignUp}
                       className="block border-b-2 py-2 md:border-0 w-full"
                     >
                       SignUp
-                    </button>
+                    </button> */}
                     <button
                       onClick={handleLoginF}
                       className="block border-b-2 py-2 md:border-0 w-full"
@@ -209,7 +207,7 @@ export default function Herosection() {
                 <path d="M114,100l49-49a9.9,9.9,0,0,0-14-14L100,86,51,37A9.9,9.9,0,0,0,37,51l49,49L37,149a9.9,9.9,0,0,0,14,14l49-49,49,49a9.9,9.9,0,0,0,14-14Z" />
               </svg>
             </button>
-            <button onClick={handleLogin}>
+            <button onClick={handleLoginF}>
               <FontAwesomeIcon icon={faUser} className="f-icon" />
             </button>
             <ClockBalanceDropDown />
@@ -222,7 +220,7 @@ export default function Herosection() {
       {showSupportModal && (
         <SupportModal onValueSupportChange={handleSupportChange} />
       )}
-      {showSignLogModal && (
+      {/* {showSignLogModal && (
         <SignupLogin
           log={login}
           sign={signup}
@@ -230,7 +228,7 @@ export default function Herosection() {
           onValueForgotChange={handleForgotChange}
           onValueSignupSuccessChange={handleSignupSuccessChange}
         />
-      )}
+      )} */}
       {showFemaleLogin && (
         <SignupLoginFemale
           logF={loginF}
@@ -265,18 +263,18 @@ export default function Herosection() {
               >
                 Settings
               </button>
-              <button
+              {/* <button
                 onClick={handleLogin}
                 className="block border-b-2 py-2 md:border-0 w-full"
               >
                 Login
-              </button>
-              <button
+              </button> */}
+              {/* <button
                 onClick={handleSignUp}
                 className="block border-b-2 py-2 md:border-0 w-full"
               >
                 SignUp
-              </button>
+              </button> */}
               <button
                 onClick={handleLoginF}
                 className="block border-b-2 py-2 md:border-0 w-full"
