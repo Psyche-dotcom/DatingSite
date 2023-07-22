@@ -2,11 +2,12 @@ import React, { useState, useEffect } from "react";
 import CustomDropdown from "@/components/CustomDropdown";
 import AccountDropdown from "@/components/AccountDropdown";
 import BalanceDropDown from "@/components/BalanceDropDown";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars, faUser, faTimes } from "@fortawesome/free-solid-svg-icons";
 
 import SettingsModal from "@/components/SettingsModal";
 
 import SupportModal from "@/components/SupportModal";
-import PersonModal from "@/components/PersonModal";
 import SignUpModal from "@/components/SignUpModal";
 import ClockBalanceDropDown from "@/components/ClockModal";
 import AuthChatting from "@/components/AuthChatting";
@@ -16,6 +17,7 @@ import IframeComponent from "@/components/IFrame";
 import SignupLoginFemale from "@/components/SignupLoginFemale";
 import SignupFemale from "@/components/SignupFemale";
 import ForgotPasswordModal from "@/components/ForgotPasswordModal";
+import SignupSuccessModal from "@/components/SignUpSuccessModal";
 
 export default function Herosection() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -27,6 +29,7 @@ export default function Herosection() {
   const [showForgotModal, setShowForgotModal] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
   const [showSignupModal, setShowSignupModal] = useState(false);
+  const [showSignupSuccess, setShowSignupSuccess] = useState(false);
   const [login, setLogin] = useState(false);
   const [signup, setSignup] = useState(false);
   const [loginF, setLoginF] = useState(false);
@@ -83,6 +86,9 @@ export default function Herosection() {
   const handleValueChange = (value) => {
     setShowSignLogModal(value);
   };
+  const handleClosedChange = (value) => {
+    setShowSignupModal(value);
+  };
   const handleFemaleValueChange = (value) => {
     setShowFemaleLogin(value);
   };
@@ -107,6 +113,12 @@ export default function Herosection() {
   const openSignupModal = () => {
     setShowSignupModal(true);
   };
+  const handleSignupSuccessChange = (value) => {
+    setShowSignupSuccess(value);
+  };
+  const handleCloseSuccessSignup = (value) => {
+    setShowSignupSuccess(value);
+  };
 
   return (
     <section
@@ -121,27 +133,19 @@ export default function Herosection() {
         <nav className="md:hidden upper">
           <ul className="flex justify-between">
             <button onClick={openModal} className="mr-auto">
-              <svg
-                width="40px"
-                height="40px"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M4 17H20M4 12H20M4 7H20"
-                  stroke="#f9096c"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  fill="#f9096c"
-                />
-              </svg>
+              <FontAwesomeIcon icon={faBars} className="f-icon" />
             </button>
             {isOpen && (
-              <div className="modal-overlay relative text-center flex items-start">
+              <div className="modalNav-overlay relative">
+                <button onClick={closeModal}>
+                  <FontAwesomeIcon
+                    icon={faTimes}
+                    className="f-icon absolute right-[16px] top-[16px] bg-white rounded-full p-1"
+                  />
+                </button>
                 <div
-                  className="modal-content bg-white p-4 rounded-lg text-center"
-                  style={{}}
+                  className=" bg-white rounded-lg text-center"
+                  style={{ width: "15rem" }}
                 >
                   <nav className="md:hidden bg-white text-black side-bar">
                     <SelectInputForm />
@@ -201,22 +205,8 @@ export default function Herosection() {
               </svg>
             </button>
             <button onClick={handleLogin}>
-              <svg
-                width="40px"
-                height="40px"
-                viewBox="0 0 24 24"
-                fill="pink"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fillRule="evenodd"
-                  clipRule="evenodd"
-                  d="M8 9C8 6.79086 9.79086 5 12 5C14.2091 5 16 6.79086 16 9C16 11.2091 14.2091 13 12 13C9.79086 13 8 11.2091 8 9ZM15.8243 13.6235C17.1533 12.523 18 10.8604 18 9C18 5.68629 15.3137 3 12 3C8.68629 3 6 5.68629 6 9C6 10.8604 6.84668 12.523 8.17572 13.6235C4.98421 14.7459 3 17.2474 3 20C3 20.5523 3.44772 21 4 21C4.55228 21 5 20.5523 5 20C5 17.7306 7.3553 15 12 15C16.6447 15 19 17.7306 19 20C19 20.5523 19.4477 21 20 21C20.5523 21 21 20.5523 21 20C21 17.2474 19.0158 14.7459 15.8243 13.6235Z"
-                  fill="#f9096c"
-                />
-              </svg>
+              <FontAwesomeIcon icon={faUser} className="f-icon" />
             </button>
-            {/* <PersonModal /> */}
             <ClockBalanceDropDown />
           </ul>
         </nav>
@@ -233,6 +223,7 @@ export default function Herosection() {
           sign={signup}
           onValueSignChange={handleValueChange}
           onValueForgotChange={handleForgotChange}
+          onValueSignupSuccessChange={handleSignupSuccessChange}
         />
       )}
       {showFemaleLogin && (
@@ -246,7 +237,7 @@ export default function Herosection() {
       {showForgotModal && (
         <ForgotPasswordModal onValueForgotClose={handleValueForgotClose} />
       )}
-      {showSignupModal && <SignUpModal />}
+      {showSignupModal && <SignUpModal onClosedChange={handleClosedChange} />}
       <div className="card-view rounded-lg shadow-xl md:pb-36 overflow-hidden w-100 md:w-75">
         <nav className="hidden md:block bg-white text-black py-5 px-10 mb-20">
           <div className="flex">
@@ -298,6 +289,11 @@ export default function Herosection() {
         {showSignupFemale && (
           <SignupFemale onValueCloseSignChange={handleCloseSignChange} />
         )}
+        {showSignupSuccess && (
+          <SignupSuccessModal
+            onValueCloseSuccessSignup={handleCloseSuccessSignup}
+          />
+        )}
         <h3 className="text-black hidden md:block text-4xl font-semibold mb-10">
           Welcome to the UkCrush video chat
         </h3>
@@ -319,11 +315,8 @@ export default function Herosection() {
         <h6 className="text-semibold text-xl mb-4">
           1 million members from 100+ countries!
         </h6>
-        {/* <SignUpModal /> */}
-        <button
-          onClick={openSignupModal}
-          className="rounded-md bg-pink text-white font-extrabold py-4 px-10 mb-4"
-        >
+
+        <button onClick={openSignupModal} className="btn-custom">
           Start chatting
         </button>
         <AuthChatting />

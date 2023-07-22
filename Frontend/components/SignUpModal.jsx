@@ -1,28 +1,17 @@
 import { useState } from "react";
 import Link from "next/link";
-import SignLogModal from "./ForgotPasswordModal";
-import PurchaseTimeModal from "./PurchaseTimeModal";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
-const SignupModal = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const openModal = () => {
-    setIsOpen(true);
-  };
+const SignupModal = ({ onClosedChange }) => {
+  const close = false;
   const closeModal = () => {
-    setIsOpen(false);
+    onClosedChange(close);
   };
   return (
-    // <div className=" border-b-2 py-2 md:border-0">
-    //   <button
-    //     onClick={openModal}
-    //     className="rounded-md bg-pink text-white font-extrabold py-4 px-10 mb-4"
-    //   >
-    //     Start chatting
-    //   </button>
-    //   {isOpen && (
-    <div className="modal-overlay px-6">
+    <div className="modal-overlay">
       <div
-        className="modal-content relative bg-white px-8 py-8 rounded-lg"
+        className="modal-content relative bg-white pd-sm rounded-lg overflow-scroll"
         style={{ height: "75%" }}
       >
         <h4 className="modal-header">Signup to continue chatting</h4>
@@ -62,27 +51,11 @@ const SignupModal = () => {
         <button className="text-pink underline">
           I already have an account
         </button>
-        <button
-          onClick={closeModal}
-          className="absolute right-[-19px] top-[-19px] bg-white rounded-full p-2"
-        >
-          <svg
-            fill="#f9096c"
-            width="20px"
-            height="20px"
-            viewBox="0 0 200 200"
-            data-name="Layer 1"
-            id="Layer_1"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <title />
-            <path d="M114,100l49-49a9.9,9.9,0,0,0-14-14L100,86,51,37A9.9,9.9,0,0,0,37,51l49,49L37,149a9.9,9.9,0,0,0,14,14l49-49,49,49a9.9,9.9,0,0,0,14-14Z" />
-          </svg>
+        <button onClick={closeModal}>
+          <FontAwesomeIcon icon={faTimes} className="f-icon ab-position" />
         </button>
       </div>
     </div>
-    // )}
-    // </div>
   );
 };
 

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Image from "next/image";
-import SignLogModal from "./ForgotPasswordModal";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 const PurchaseTimeModal = ({ onValueChange }) => {
   const value = false;
@@ -10,12 +11,12 @@ const PurchaseTimeModal = ({ onValueChange }) => {
 
   return (
     <div className=" border-b-2 py-2 md:border-0">
-      <div className="modal-overlay px-6">
+      <div className="modal-overlay">
         <div
-          className="modal-content relative bg-white py-4 rounded-lg "
+          className="modal-content pd-sm relative bg-white pt-4 rounded-lg overflow-scroll"
           style={{ height: "75%" }}
         >
-          <div className="pb-10 px-10 bg-white rounded-lg text-center">
+          <div className=" bg-white rounded-lg text-center">
             <h4 className="modal-header">
               Top up minutes to continue chatting
             </h4>
@@ -59,22 +60,8 @@ const PurchaseTimeModal = ({ onValueChange }) => {
             <p className="text-xl text-black">Let's Encrypt</p>
           </div>
 
-          <button
-            onClick={closeModal}
-            className="absolute right-[-19px] top-[-19px] bg-white rounded-full p-2"
-          >
-            <svg
-              fill="#f9096c"
-              width="20px"
-              height="20px"
-              viewBox="0 0 200 200"
-              data-name="Layer 1"
-              id="Layer_1"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <title />
-              <path d="M114,100l49-49a9.9,9.9,0,0,0-14-14L100,86,51,37A9.9,9.9,0,0,0,37,51l49,49L37,149a9.9,9.9,0,0,0,14,14l49-49,49,49a9.9,9.9,0,0,0,14-14Z" />
-            </svg>
+          <button onClick={closeModal}>
+            <FontAwesomeIcon icon={faTimes} className="f-icon ab-position" />
           </button>
         </div>
       </div>

@@ -46,7 +46,6 @@ function ClockBalanceDropDown() {
           </MenuItem>
         </div>
       </Menu>
-      {/* {balanceModal && <PurchaseTime onChildValue={handleChildValue} />} */}
       {balanceModal && <PurchaseTimeModal onValueChange={handleValueChange} />}
     </div>
   );

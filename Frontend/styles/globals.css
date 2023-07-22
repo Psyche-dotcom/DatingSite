@@ -51,6 +51,12 @@ body {
   padding: 8px;
   border-radius: 4px;
 }
+.f-icon {
+  color: #f9096c;
+  width: 24px;
+  height: 24px;
+}
+
 .landing-bgimage {
   background-image: url(https://uk.luckycrush.live/assets/img/people-mozaic.png);
   background-size: cover;
@@ -76,6 +82,21 @@ body {
   border-image: initial;
   width: 100%;
 }
+.female-register input {
+  line-height: 35px;
+  font-size: 16px;
+  outline: none;
+  border-radius: 5px;
+  padding: 5px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgb(139, 139, 139);
+  border-image: initial;
+}
+.female-register label {
+  display: block;
+  text-align: start;
+}
 .imp {
   margin-top: 3rem !important;
 }
@@ -91,7 +112,24 @@ body {
   font-weight: 600;
   text-align: center;
   color: #000;
-  margin-bottom: 2rem;
+  margin-bottom: 16px;
+  letter-spacing: 0.8px;
+}
+.btn-custom {
+  background: #f9096c;
+  border-radius: 8px;
+  color: #fff;
+  font-weight: 600;
+  padding: 1rem 2rem;
+  margin-bottom: 1rem;
+}
+.ab-position {
+  position: absolute;
+  right: -19px;
+  top: -19px;
+  background: #fff;
+  border-radius: 50%;
+  padding: 8px;
 }
 .sub-class {
   padding: 0px 4px;
@@ -153,14 +191,28 @@ body {
   align-items: center;
   justify-content: center;
   background-color: rgba(0, 0, 0, 0.4);
+  padding: 0 1rem;
+}
+.modalNav-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 .modal-content {
   background-color: #fefefe;
   border: 1px solid #888;
   max-width: 400px;
+  max-height: 400px;
+  overflow-x: hidden;
 }
-
+.pd-sm {
+  padding: 0 1.2rem 1rem 1rem;
+}
 .close {
   color: #aaa;
   float: right;
@@ -168,6 +220,15 @@ body {
   font-weight: bold;
   cursor: pointer;
 }
+@media (max-width: 499px) {
+  .modal-header {
+    font-size: 20px;
+    text-align: center;
+    letter-spacing: 0.4px;
+    margin: 10px;
+  }
+}
+/* @media () */
 /* :root {
   --max-width: 1100px;
   --border-radius: 12px;

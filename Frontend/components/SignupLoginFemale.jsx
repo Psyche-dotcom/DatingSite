@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 export default function SignupLoginFemale({
   logF,
@@ -51,22 +53,8 @@ export default function SignupLoginFemale({
               Login
             </button>
           </div>
-          <button
-            onClick={closeModal}
-            className="absolute right-[-19px] top-[-19px] bg-white rounded-full p-2"
-          >
-            <svg
-              fill="#f9096c"
-              width="20px"
-              height="20px"
-              viewBox="0 0 200 200"
-              data-name="Layer 1"
-              id="Layer_1"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <title />
-              <path d="M114,100l49-49a9.9,9.9,0,0,0-14-14L100,86,51,37A9.9,9.9,0,0,0,37,51l49,49L37,149a9.9,9.9,0,0,0,14,14l49-49,49,49a9.9,9.9,0,0,0,14-14Z" />
-            </svg>
+          <button onClick={closeModal}>
+            <FontAwesomeIcon icon={faTimes} className="f-icon ab-position" />
           </button>
           {loginF && (
             <div className="px-10 pb-10">
@@ -97,35 +85,6 @@ export default function SignupLoginFemale({
             </div>
           )}
         </div>
-
-        {/* <style jsx>{`
-          .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: rgba(0, 0, 0, 0.4);
-          }
-
-          .modal-content {
-            background-color: #fefefe;
-
-            border: 1px solid #888;
-            max-width: 500px;
-          }
-
-          .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-          }
-        `}</style> */}
       </div>
     </>
   );
