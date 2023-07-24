@@ -125,6 +125,7 @@ export default function Herosection() {
       className="view-page md:mb-10 text-center md:pb-12 md:pt-12"
       id="element1"
     >
+
       <h4 className=" text-4xl text-black mb-10 hidden md:block">
         Uk<span className="font-semibold">Crush</span>
       </h4>

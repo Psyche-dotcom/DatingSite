@@ -2,10 +2,10 @@ import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
-const ForgotPasswordModal = ({ onValueForgotClose }) => {
+const UserName = ({ onValueUsernameChange }) => {
   const value = false;
   const closeModal = () => {
-    onValueForgotClose(value);
+    onValueUsernameChange(value);
   };
   return (
     <>
@@ -21,13 +21,12 @@ const ForgotPasswordModal = ({ onValueForgotClose }) => {
 
             <div className="pd-sm bg-white rounded-lg pt-10">
               <h4 className="modal-header text-black text-center mb-5">
-                Forgot password
+                Change username
               </h4>
-              <p>What is the email address associated with your account</p>
               <form className="register">
                 <div className="mb-4">
                   <label for="email" className="mb-3">
-                    Email
+                    Enter new username
                   </label>
                   <input type="text" placeholder="Email" className="w-full" />
                 </div>
@@ -44,4 +43,4 @@ const ForgotPasswordModal = ({ onValueForgotClose }) => {
   );
 };
 
-export default ForgotPasswordModal;
+export default UserName;

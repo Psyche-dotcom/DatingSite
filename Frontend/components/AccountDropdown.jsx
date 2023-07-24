@@ -6,18 +6,17 @@ import Link from "next/link";
 import SettingsModal from "./SettingsModal";
 import AccountDetailsModal from "./AccountDetailsModal";
 
-function AccountDropdown({ onClose }) {
+function AccountDropdown({ onClose, onValueProfileInfo }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const [isOpen, setIsOpen] = useState(false);
+  const value = true;
   const openModal = () => {
-    setIsOpen(true);
     setAnchorEl(null);
+    onValueProfileInfo(value);
   };
-  const closeModal = () => {
-    setIsOpen(false);
-    onClose();
-  };
-
+  // const closeModal = () => {
+  //   setIsOpen(false);
+  //   onClose();
+  // };
   const handleOpen = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -25,9 +24,6 @@ function AccountDropdown({ onClose }) {
   const handleClose = () => {
     setAnchorEl(null);
     onClose();
-  };
-  const handleSettingsvalue = (value) => {
-    setIsOpen(value);
   };
 
   return (
@@ -46,9 +42,6 @@ function AccountDropdown({ onClose }) {
           <MenuItem onClick={handleClose}>Log out</MenuItem>
         </div>
       </Menu>
-      {isOpen && (
-        <AccountDetailsModal onValueAccDetailsChange={handleSettingsvalue} />
-      )}
     </div>
   );
 }

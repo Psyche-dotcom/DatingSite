@@ -16,6 +16,9 @@ import SignupLoginFemale from "./SignupLoginFemale";
 import SignupFemale from "./SignupFemale";
 import ForgotPasswordModal from "./ForgotPasswordModal";
 import SignupSuccessModal from "./SignUpSuccessModal";
+import AccountDetailsModal from "./AccountDetailsModal";
+import UserName from "./UserName";
+import EmailModal from "./EmailModal";
 
 export default function HerosectionFemale() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -28,10 +31,14 @@ export default function HerosectionFemale() {
   const [showSettings, setShowSettings] = useState(false);
   const [showSignupModal, setShowSignupModal] = useState(false);
   const [showSignupSuccess, setShowSignupSuccess] = useState(false);
+  const [showAccountDetails, setShowAccountDetails] = useState(false);
   const [login, setLogin] = useState(false);
   const [signup, setSignup] = useState(false);
   const [loginF, setLoginF] = useState(false);
   const [signupF, setSignupF] = useState(false);
+  const [username, setUsername] = useState(false);
+  const [email, setEmail] = useState(false);
+  const [password, setPassword] = useState(false);
 
   const handleClose = () => {
     setAnchorEl(null);
@@ -68,6 +75,13 @@ export default function HerosectionFemale() {
 
     setShowFemaleLogin(true);
     setIsOpen(false);
+  };
+  const handleSignupF = () => {
+    // setLoginF(true);
+    setShowSignupFemale(true);
+
+    // setShowFemaleLogin(true);
+    // setIsOpen(false);
   };
   const handleSignUp = () => {
     setLogin(false);
@@ -117,7 +131,32 @@ export default function HerosectionFemale() {
   const handleCloseSuccessSignup = (value) => {
     setShowSignupSuccess(value);
   };
+  const handleValueProfileInfo = (value) => {
+    setShowAccountDetails(value);
+    setIsOpen(false);
+  };
+  const handleAccountDetailsChange = (value) => {
+    setShowAccountDetails(value);
+  };
 
+  const handleUserChange = (value) => {
+    // setShowAccountDetails(value);
+    // username = value;
+    // console.log(username);
+    setUsername(value);
+  };
+  const handleMailChange = (value) => {
+    setEmail(value);
+  };
+  const handlePasswordChange = (value) => {
+    // setShowAccountDetails(value);
+  };
+  const handleUsernameChange = (value) => {
+    setUsername(value);
+  };
+  const handleEmailChange = (value) => {
+    setEmail(value);
+  };
   return (
     <section
       className="view-page md:mb-10 text-center md:pb-12 md:pt-12"
@@ -184,6 +223,7 @@ export default function HerosectionFemale() {
                       <AccountDropdown
                         anchorEl={anchorEl}
                         onClose={handleDropdownClose}
+                        onValueProfileInfo={handleValueProfileInfo}
                       />
                     </div>
                     <div className="py-3 border-b-2">
@@ -235,12 +275,23 @@ export default function HerosectionFemale() {
           signF={signupF}
           onValueFemaleSignChange={handleFemaleValueChange}
           onValueFemaleSignupChanged={handleFemaleValueChangePopup}
+          onValueForgotChange={handleForgotChange}
         />
       )}
       {showForgotModal && (
         <ForgotPasswordModal onValueForgotClose={handleValueForgotClose} />
       )}
       {showSignupModal && <SignUpModal onClosedChange={handleClosedChange} />}
+      {showAccountDetails && (
+        <AccountDetailsModal
+          onValueAccDetailsChange={handleAccountDetailsChange}
+          onvalueUserChange={handleUserChange}
+          onValueMailChange={handleMailChange}
+          onValuePasswordChange={handlePasswordChange}
+        />
+      )}
+      {username && <UserName onValueUsernameChange={handleUsernameChange} />}
+      {email && <EmailModal onValueEmailChange={handleEmailChange} />}
       <div className="card-view rounded-lg shadow-xl md:pb-36 overflow-hidden w-100 md:w-75">
         <nav className="hidden md:block bg-white text-black py-5 px-10 mb-20">
           <div className="flex">
@@ -281,9 +332,16 @@ export default function HerosectionFemale() {
               >
                 LoginF
               </button>
+              <button
+                onClick={handleSignupF}
+                className="block border-b-2 py-2 md:border-0 w-full"
+              >
+                Signup
+              </button>
               <AccountDropdown
                 anchorEl={anchorEl}
                 onClose={handleDropdownClose}
+                onValueProfileInfo={handleValueProfileInfo}
               />
               <BalanceDropDown />
             </div>

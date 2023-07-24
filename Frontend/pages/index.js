@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Footer from "@/parts/noAuth/Footer";
 import BodyPage from "@/components/BodyPage";
+import HerosectionFemale from "@/components/HeroSectionFemale";
 
 export default function Home() {
   return (
@@ -28,6 +29,7 @@ export default function Home() {
           </div>
         </section>
       </div>
+
       <div className="hidden md:block">
         <BodyPage />
         <div className="mt-10">

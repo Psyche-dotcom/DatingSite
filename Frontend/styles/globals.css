@@ -60,6 +60,7 @@ body {
   color: #f9096c;
   width: 24px;
   height: 24px;
+  padding-top: 2px;
 }
 
 .landing-bgimage {
@@ -215,6 +216,12 @@ body {
   max-width: 400px;
   max-height: 400px;
   overflow-x: hidden;
+}
+.contain-modal-content {
+  background-color: #fefefe;
+  border: 1px solid #888;
+  max-width: 400px;
+  max-height: 400px;
 }
 .pd-sm {
   padding: 0 1.2rem 1rem 1rem;
