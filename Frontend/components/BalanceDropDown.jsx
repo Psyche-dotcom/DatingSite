@@ -5,6 +5,7 @@ import { useState } from "react";
 import Link from "next/link";
 
 import PurchaseTime from "./PurchaseTime";
+import PurchaseTimeModal from "./PurchaseTimeModal";
 
 function BalanceDropDown({ onClose }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -21,10 +22,8 @@ function BalanceDropDown({ onClose }) {
     setBalanceModal(true);
     setAnchorEl(null);
   };
-  const handleChildValue = (value) => {
+  const handleValueChange = (value) => {
     setBalanceModal(value);
-    // Do something with the value received from the child
-    console.log("Value received from Child:", value);
   };
 
   return (
@@ -45,7 +44,7 @@ function BalanceDropDown({ onClose }) {
           </MenuItem>
         </div>
       </Menu>
-      {balanceModal && <PurchaseTime onChildValue={handleChildValue} />}
+      {balanceModal && <PurchaseTimeModal onValueChange={handleValueChange} />}
     </div>
   );
 }
