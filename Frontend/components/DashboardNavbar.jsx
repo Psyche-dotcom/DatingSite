@@ -22,7 +22,12 @@ const DashboardNavbar = () => {
             href="#"
             className="flex gap-2 items-center rounded-md bg-white px-4 py-2"
           >
-            <Image src="/favicon_io/plus.svg" height={16} width={16} />
+            <Image
+              src="/favicon_io/plus.svg"
+              height={16}
+              width={16}
+              alt="Add button icon"
+            />
             <h6 className="text-black">New Member</h6>
           </Link>
         </div>

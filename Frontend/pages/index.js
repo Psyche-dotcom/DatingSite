@@ -4,10 +4,12 @@ import Image from "next/image";
 import Footer from "@/parts/noAuth/Footer";
 import BodyPage from "@/components/BodyPage";
 import HerosectionFemale from "@/components/HeroSectionFemale";
+import IframePage from "@/components/IFrame";
 
 export default function Home() {
   return (
     <div>
+      <IframePage />
       <div
         className=" m-auto mb-10 view-page text-center"
         style={{ padding: "10rem 0" }}

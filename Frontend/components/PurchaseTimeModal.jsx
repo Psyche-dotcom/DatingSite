@@ -31,7 +31,8 @@ const PurchaseTimeModal = ({ onValueChange }) => {
                   title="approved icons"
                   height={24}
                   width={24}
-                  className="mr-3  sub-icon"
+                  className="mr-3 sub-icon"
+                  alt="A marker icon"
                 />
                 <p className="mr-auto">15 minutes</p>
                 <p>16.99 USD</p>
@@ -43,6 +44,7 @@ const PurchaseTimeModal = ({ onValueChange }) => {
                   height={24}
                   width={24}
                   className="mr-3  sub-icon"
+                  alt="A marker icon"
                 />
                 <p className="mr-auto border-pink">45 minutes</p>
                 <p>49.99 USD</p>
@@ -54,6 +56,7 @@ const PurchaseTimeModal = ({ onValueChange }) => {
                   height={24}
                   width={24}
                   className="mr-3 sub-icon"
+                  alt="A marker icon"
                 />
                 <p className="mr-auto">90 minutes</p>
                 <p>99.99 USD</p>

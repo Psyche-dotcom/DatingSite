@@ -10,7 +10,12 @@ const DashboardSidebar = () => {
         className="px-5 py-5 bg-white hidden lg:block"
       >
         <div className="rounded-md border-2 flex p-2">
-          <Image src="/favicon_io/search.svg" height={16} width={16} />
+          <Image
+            src="/favicon_io/search.svg"
+            height={16}
+            width={16}
+            alt="Search icon"
+          />
           <input placeholder="Search..." type="text" className="w-full" />
         </div>
         <h4 className="my-5 text-h4">Projects</h4>
@@ -18,7 +23,12 @@ const DashboardSidebar = () => {
           <li>
             <Link className="sidebar_icon" href="#">
               <div className="sidebar__icon">
-                <Image src="/favicon_io/bebo.svg" height={20} width={20} />
+                <Image
+                  src="/favicon_io/bebo.svg"
+                  height={20}
+                  width={20}
+                  alt="An icon"
+                />
               </div>
               <div>
                 <h5>Briviba SaaS</h5>
@@ -29,7 +39,12 @@ const DashboardSidebar = () => {
           <li>
             <Link className="sidebar_icon" href="#">
               <div className="sidebar__icon">
-                <Image src="/favicon_io/bebo.svg" height={20} width={20} />
+                <Image
+                  src="/favicon_io/bebo.svg"
+                  height={20}
+                  width={20}
+                  alt="An icon"
+                />
               </div>
               <div>
                 <h5>Briviba SaaS</h5>
@@ -40,7 +55,12 @@ const DashboardSidebar = () => {
           <li>
             <Link className="sidebar_icon" href="#">
               <div className="sidebar__icon">
-                <Image src="/favicon_io/vimeo.svg" height={20} width={20} />
+                <Image
+                  src="/favicon_io/vimeo.svg"
+                  height={20}
+                  width={20}
+                  alt="An icon"
+                />
               </div>
               <div>
                 <h5>Briviba SaaS</h5>
@@ -51,7 +71,12 @@ const DashboardSidebar = () => {
           <li>
             <Link className="sidebar_icon" href="#">
               <div className="sidebar__icon">
-                <Image src="/favicon_io/vimeo.svg" height={20} width={20} />
+                <Image
+                  src="/favicon_io/vimeo.svg"
+                  height={20}
+                  width={20}
+                  alt="An icon"
+                />
               </div>
               <div>
                 <h5>Briviba SaaS</h5>

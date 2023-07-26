@@ -2,6 +2,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import { useDataFetching } from "@/service/apiCalls/Fetcher";
 
 const AccountDetailsModal = ({
   onValueAccDetailsChange,
@@ -9,6 +10,8 @@ const AccountDetailsModal = ({
   onValueMailChange,
   onValuePasswordChange,
 }) => {
+  // const { data, error } = useDataFetching("/api/data");
+
   const value = false;
   const username = true;
   const mail = true;
@@ -29,7 +32,12 @@ const AccountDetailsModal = ({
   const editPassword = () => {
     onValuePasswordChange(password);
   };
-
+  // if (error) {
+  //   return <div>Error: {error.message}</div>;
+  // }
+  // if (!data) {
+  //   return <div>loading...</div>;
+  // }
   return (
     <div className="modal-overlay">
       <div className="relative contain-modal-content rounded-lg">
