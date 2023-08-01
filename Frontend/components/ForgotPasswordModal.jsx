@@ -126,7 +126,6 @@ const ForgotPasswordModal = ({ onValueForgotClose }) => {
                         style={{ color: "red" }}
                       />
                     </div>
-
                     <button
                       className={`btn-custom ${
                         !isValid ? "opacity-50 cursor-not-allowed" : ""

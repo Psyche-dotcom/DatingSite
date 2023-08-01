@@ -21,7 +21,7 @@ const DashboardSidebar = () => {
         <h4 className="my-5 text-h4">Projects</h4>
         <ul className="sidebar-lists">
           <li>
-            <Link className="sidebar_icon" href="#">
+            <Link className="sidebar_icon" href="/Dashboard/dashboard">
               <div className="sidebar__icon">
                 <Image
                   src="/favicon_io/bebo.svg"
@@ -31,13 +31,12 @@ const DashboardSidebar = () => {
                 />
               </div>
               <div>
-                <h5>Briviba SaaS</h5>
-                <p>By James</p>
+                <h5 className="text-h5">Dashboard</h5>
               </div>
             </Link>
           </li>
           <li>
-            <Link className="sidebar_icon" href="#">
+            <Link className="sidebar_icon" href="/Dashboard/usermanagement">
               <div className="sidebar__icon">
                 <Image
                   src="/favicon_io/bebo.svg"
@@ -47,8 +46,7 @@ const DashboardSidebar = () => {
                 />
               </div>
               <div>
-                <h5>Briviba SaaS</h5>
-                <p>By James</p>
+                <h5 className="text-h5">User Management</h5>
               </div>
             </Link>
           </li>
@@ -63,24 +61,7 @@ const DashboardSidebar = () => {
                 />
               </div>
               <div>
-                <h5>Briviba SaaS</h5>
-                <p>By James</p>
-              </div>
-            </Link>
-          </li>
-          <li>
-            <Link className="sidebar_icon" href="#">
-              <div className="sidebar__icon">
-                <Image
-                  src="/favicon_io/vimeo.svg"
-                  height={20}
-                  width={20}
-                  alt="An icon"
-                />
-              </div>
-              <div>
-                <h5>Briviba SaaS</h5>
-                <p>By James</p>
+                <h5 className="text-h5">Cam Managements</h5>
               </div>
             </Link>
           </li>
