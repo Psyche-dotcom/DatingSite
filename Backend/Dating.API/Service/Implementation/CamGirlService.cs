@@ -2,7 +2,6 @@
 using Data.Repository.Interface;
 using Dating.API.Service.Interface;
 using Model.DTO;
-using Model.Enitities;
 
 namespace Dating.API.Service.Implementation
 {
@@ -20,6 +19,7 @@ namespace Dating.API.Service.Implementation
             _accountRepo = accountRepo;
             _mapper = mapper;
         }
+
         public async Task<ResponseDto<PaginatedUser>> GetCamGirlsAvailableAsync(int pageNumber, int perPageSize, CamgirlPreference camgirl)
         {
             var response = new ResponseDto<PaginatedUser>();
@@ -46,9 +46,29 @@ namespace Dating.API.Service.Implementation
                 response.DisplayMessage = "Error";
                 return response;
             }
-
-
         }
+
+        public async Task<ResponseDto<PaginatedUser>> GetAllCamGirlsAsync(int pageNumber, int perPageSize)
+        {
+            var response = new ResponseDto<PaginatedUser>();
+            try
+            {
+                var getCAMGIRL = await _camGirlRepo.GetAllCamGirlsAsync(pageNumber, perPageSize);
+                response.StatusCode = StatusCodes.Status200OK;
+                response.DisplayMessage = "Success";
+                response.Result = getCAMGIRL;
+                return response;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message, ex);
+                response.ErrorMessages = new List<string>() { "Error in retrieving all camgirl" };
+                response.StatusCode = 500;
+                response.DisplayMessage = "Error";
+                return response;
+            }
+        }
+
         public async Task<ResponseDto<string>> SetCamgirlAsTaken(string camGirlEmail)
         {
             var response = new ResponseDto<string>();
@@ -91,6 +111,7 @@ namespace Dating.API.Service.Implementation
                 return response;
             }
         }
+
         public async Task<ResponseDto<string>> SetCamgirlAsNotTaken(string camGirlEmail)
         {
             var response = new ResponseDto<string>();
@@ -104,7 +125,7 @@ namespace Dating.API.Service.Implementation
                     response.DisplayMessage = "Error";
                     return response;
                 }
-                
+
                 var setCamGirlHasTaken = await _accountRepo.UpdateUserStatusNotTaken(findUser);
                 if (setCamGirlHasTaken == false)
                 {
@@ -127,6 +148,7 @@ namespace Dating.API.Service.Implementation
                 return response;
             }
         }
+
         public async Task<ResponseDto<DisplayFindUserDTO>> FindCamGirlbyUserName(string userName)
         {
             var response = new ResponseDto<DisplayFindUserDTO>();
@@ -141,7 +163,7 @@ namespace Dating.API.Service.Implementation
                     return response;
                 }
                 var checkInCamgirlRole = await _camGirlRepo.CheckInCamgirlRole(userName);
-                if(checkInCamgirlRole == false)
+                if (checkInCamgirlRole == false)
                 {
                     response.ErrorMessages = new List<string>() { "username provided is not a camgirl" };
                     response.StatusCode = 400;
@@ -162,7 +184,6 @@ namespace Dating.API.Service.Implementation
                 response.DisplayMessage = "Error";
                 return response;
             }
-            
         }
     }
 }

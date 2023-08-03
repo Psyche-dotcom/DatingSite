@@ -10,6 +10,7 @@ namespace Dating.API.Extension
     {
         public static void ConfigureServices(this IServiceCollection services, IConfiguration configuration)
         {
+            services.AddMemoryCache();
             services.AddScoped<IAccountRepo, AccountRepo>();
             services.AddScoped<IAccountService, AccountService>();
             services.AddScoped<IGenerateJwt, GenerateJwt>();
@@ -18,8 +19,14 @@ namespace Dating.API.Extension
             services.AddScoped<IPaymentRepo, PaymentRepo>();
             services.AddAutoMapper(typeof(ProjectProfile));
             services.AddScoped<IEmailServices, EmailService>();
-            services.AddScoped<ICamGirlRepo , CamGirlRepo>();
-            services.AddScoped<ICamGirlService , CamGirlService>();
+            services.AddScoped<ICamGirlRepo, CamGirlRepo>();
+            services.AddScoped<ICamGirlService, CamGirlService>();
+            services.AddScoped<ICallRecordRepo, CallRecordRepo>();
+            services.AddScoped<ICallRecordService, CallRecordService>();
+            services.AddScoped<ITimerRepo, TimerRepo>();
+            services.AddScoped<ITimerService, TimerService>();
+            //services.AddSingleton(configuration);
+            services.AddScoped<IPayPalService, PayPalService>();
         }
     }
 }

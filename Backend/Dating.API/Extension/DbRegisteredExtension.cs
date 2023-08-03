@@ -10,7 +10,7 @@ namespace Dating.API.Extension
         public static void ConfigureDb(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<DatingSiteContext>().AddDefaultTokenProviders();
-            services.AddDbContext<DatingSiteContext>(dbContextOptions => dbContextOptions.UseSqlite(configuration["ConnectionStrings:DatingSiteConnectionString"]));
+            services.AddDbContext<DatingSiteContext>(dbContextOptions => dbContextOptions.UseNpgsql(configuration["ConnectionStrings:ProdDb"]));
         }
     }
 }

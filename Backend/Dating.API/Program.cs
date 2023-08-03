@@ -1,11 +1,5 @@
 using Dating.API.Extension;
-using Dating.API.Service.Implementation;
-using Dating.API.Service.Interface;
 using System.Text.Json.Serialization;
-using Microsoft.Extensions.DependencyInjection;
-using Dating.API.Configuration;
-using Microsoft.Extensions.Configuration;
-
 
 var builder = WebApplication.CreateBuilder(args);
 var config = builder.Configuration;
@@ -21,18 +15,16 @@ builder.Services.ConfigureDb(builder.Configuration);
 builder.Services.ConfigureServices(builder.Configuration);
 builder.Services.ConfigurePayment(config);
 
-
-
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
+//if (app.Environment.IsDevelopment())
+//{
     app.UseSwagger();
     app.UseSwaggerUI();
-}
+//}
 
 app.UseHttpsRedirection();
 app.UseAuthorization();

@@ -1,9 +1,4 @@
 ﻿using Model.Enum;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Model.DTO
 {
@@ -17,5 +12,6 @@ namespace Model.DTO
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
         public string UserName { get; set; }
+        public int TimeAvailable { get; set; }
     }
 }

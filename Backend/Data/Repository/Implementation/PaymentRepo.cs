@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Data.Context;
+﻿using Data.Context;
 using Data.Repository.Interface;
 using Microsoft.EntityFrameworkCore;
 using Model.Enitities;
@@ -13,16 +8,18 @@ namespace Data.Repository.Implementation
 {
     public class PaymentRepo : IPaymentRepo
     {
-        DatingSiteContext _context;
+        private DatingSiteContext _context;
 
         public PaymentRepo(DatingSiteContext context)
         {
             _context = context;
         }
+
         public async Task<Payments> GetPaymentById(string OrderId)
         {
             return await _context.Payments.FirstOrDefaultAsync(x => x.ReferenceNumber == OrderId);
         }
+
         public Payments AddPayments(Order order)
         {
             try
@@ -42,7 +39,7 @@ namespace Data.Repository.Implementation
                 _context.Payments.Add(data);
                 return _context.SaveChanges() > 0 ? data : null;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return new Payments()
                 {
@@ -50,10 +47,12 @@ namespace Data.Repository.Implementation
                 };
             }
         }
+
         public async Task<bool> IsPaymentActive(string orderId)
         {
-             return  _context.Payments.FirstOrDefault(x => x.ReferenceNumber == orderId).IsActive;
+            return _context.Payments.FirstOrDefault(x => x.ReferenceNumber == orderId).IsActive;
         }
+
         public bool DeactivatePayment(string orderId)
         {
             var data = _context.Payments.FirstOrDefault(x => x.ReferenceNumber == orderId);

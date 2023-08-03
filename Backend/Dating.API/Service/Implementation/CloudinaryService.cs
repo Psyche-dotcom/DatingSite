@@ -1,10 +1,9 @@
-﻿using CloudinaryDotNet.Actions;
-using CloudinaryDotNet;
+﻿using CloudinaryDotNet;
+using CloudinaryDotNet.Actions;
 using Dating.API.Service.Interface;
 
 namespace Dating.API.Service.Implementation
 {
-
     public class CloudinaryService : ICloudinaryService
     {
         private readonly IConfiguration _configuration;
@@ -13,6 +12,7 @@ namespace Dating.API.Service.Implementation
         {
             _configuration = configuration;
         }
+
         public async Task<ImageUploadResult> UploadPhoto(IFormFile file, object id)
         {
             if (file == null || file.Length == 0)

@@ -1,28 +1,15 @@
-﻿using System;
-using System.Numerics;
-using System.Text.Json.Nodes;
-using CloudinaryDotNet;
-using Data.Repository.Interface;
-using Dating.API.Configuration;
+﻿using Data.Repository.Interface;
 using Dating.API.Service.Interface;
-using Microsoft.AspNetCore.DataProtection;
 using Model.DTO;
-using Newtonsoft.Json;
-using Org.BouncyCastle.Asn1.Ocsp;
 using PayPalCheckoutSdk.Core;
 using PayPalCheckoutSdk.Orders;
-using PayPalCheckoutSdk.Payments;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
-using static Org.BouncyCastle.Math.EC.ECCurve;
 
 namespace Dating.API.Service.Implementation
 {
     public class Payments : IPayments
     {
-
-        PayPalHttpClient _client;
-        IPaymentRepo _paymentdb;
-
+        private PayPalHttpClient _client;
+        private IPaymentRepo _paymentdb;
 
         public Payments(PayPalHttpClient client, IPaymentRepo paymentdb)
         {
@@ -35,24 +22,19 @@ namespace Dating.API.Service.Implementation
             var result = new ResponseDto<Order>();
             try
             {
-                
                 var orderRequest = OrderRequest(amount.ToString("0.00"), currency, description);
                 var response = await _client.Execute(orderRequest);
                 var order = response.Result<Order>();
-
-
 
                 result.Result = order;
                 result.DisplayMessage = $"{order.Id}";
                 result.StatusCode = 201;
                 result.Succeeded = true;
-                
 
                 return result;
             }
             catch (Exception ex)
             {
-
                 result.ErrorMessages.Add(ex.Message);
                 result.DisplayMessage = $"Failed to make Order";
                 result.StatusCode = StatusCodes.Status204NoContent;
@@ -83,7 +65,6 @@ namespace Dating.API.Service.Implementation
                     },
                     ApplicationContext = new ApplicationContext()
                     {
-                        
                         PaymentMethod = new PaymentMethod
                         {
                             PayeePreferred = "IMMEDIATE_PAYMENT_REQUIRED",
@@ -109,7 +90,6 @@ namespace Dating.API.Service.Implementation
                 {
                     Id = OrderId
                 };
-                
 
                 var response = await _client.Execute(capture);
                 var order = response.Result<Order>();
@@ -123,10 +103,10 @@ namespace Dating.API.Service.Implementation
                 {
                     Succeeded = IsComplete,
                     Result = order,
-                    StatusCode = IsComplete? StatusCodes.Status200OK : StatusCodes.Status500InternalServerError,
+                    StatusCode = IsComplete ? StatusCodes.Status200OK : StatusCodes.Status500InternalServerError,
                 };
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return new ResponseDto<Order>()
                 {

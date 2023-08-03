@@ -1,10 +1,7 @@
 ﻿using Data.Repository.Interface;
-using Dating.API.Configuration;
 using Dating.API.Service.Interface;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Model.Enum;
-using Org.BouncyCastle.Utilities.Collections;
 
 namespace Dating.API.Controllers
 {
@@ -24,14 +21,14 @@ namespace Dating.API.Controllers
         [HttpGet("get-OrderId")]
         public async Task<IActionResult> GetOrder(string paymentType, string currency, string description)
         {
-            Amount amount = paymentType == "Type1"? Amount.Type1 : paymentType == "Type2"? Amount.Type2 : paymentType == "Type3"? Amount.Type3 : 0.00;
+            Amount amount = paymentType == "Type1" ? Amount.Type1 : paymentType == "Type2" ? Amount.Type2 : paymentType == "Type3" ? Amount.Type3 : 0.00;
 
             var data = await _pay.MakeOrder((decimal)amount, currency, description);
-                if (data == null)
+            if (data == null)
             {
                 return Problem("Order not set");
             }
-            else 
+            else
                 return Ok(data.Result.Links.ToDictionary(links => links.Rel, links => links.Href));
         }
 

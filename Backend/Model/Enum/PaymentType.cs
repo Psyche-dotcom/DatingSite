@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Model.Enum
+﻿namespace Model.Enum
 {
     public enum PaymentType
     {
@@ -42,7 +35,7 @@ namespace Model.Enum
     }
 
     public enum Amount
-    { 
+    {
         Type1 = 10,
         Type2 = 100,
         Type3 = 1000

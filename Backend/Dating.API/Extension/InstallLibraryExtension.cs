@@ -19,7 +19,6 @@ namespace Dating.API.Extension
                      Type = SecuritySchemeType.ApiKey,
                      BearerFormat = "JWT",
                      Scheme = "Bearer"
-
                  });
                  option.AddSecurityRequirement(new OpenApiSecurityRequirement
      {
@@ -52,7 +51,6 @@ namespace Dating.API.Extension
         ValidateIssuerSigningKey = false,
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JWT:Secret"]))
     };
-
 });
         }
     }

@@ -7,7 +7,6 @@ namespace Dating.API.Service.Implementation
 {
     public class EmailService : IEmailServices
     {
-
         private readonly IConfiguration _configuration;
         private readonly ILogger<EmailService> _logger;
 
@@ -16,11 +15,13 @@ namespace Dating.API.Service.Implementation
             _configuration = configuration;
             _logger = logger;
         }
+
         public void SendEmail(Message message)
         {
             var emailMessage = CreateEmailMessage(message);
             Send(emailMessage);
         }
+
         private MimeMessage CreateEmailMessage(Message message)
         {
             var emailMessage = new MimeMessage();
@@ -30,6 +31,7 @@ namespace Dating.API.Service.Implementation
             emailMessage.Body = new TextPart(MimeKit.Text.TextFormat.Html) { Text = message.Content };
             return emailMessage;
         }
+
         public void Send(MimeMessage mailMessage)
         {
             using var client = new SmtpClient();

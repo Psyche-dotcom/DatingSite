@@ -18,6 +18,7 @@ namespace Dating.API.Service.Implementation
             _configuration = configuration;
             _userManager = userManager;
         }
+
         public async Task<string> GenerateToken(ApplicationUser user)
         {
             var roles = await _userManager.GetRolesAsync(user);

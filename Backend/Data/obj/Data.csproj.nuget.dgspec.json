@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Decagon\\Documents\\GitHub\\DatingSite\\Backend\\Data\\Data.csproj": {}
+    "C:\\Users\\bsahe\\Documents\\Git_Project\\DatingSiteLatest\\Backend\\Data\\Data.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Decagon\\Documents\\GitHub\\DatingSite\\Backend\\Data\\Data.csproj": {
+    "C:\\Users\\bsahe\\Documents\\Git_Project\\DatingSiteLatest\\Backend\\Data\\Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Decagon\\Documents\\GitHub\\DatingSite\\Backend\\Data\\Data.csproj",
+        "projectUniqueName": "C:\\Users\\bsahe\\Documents\\Git_Project\\DatingSiteLatest\\Backend\\Data\\Data.csproj",
         "projectName": "Data",
-        "projectPath": "C:\\Users\\Decagon\\Documents\\GitHub\\DatingSite\\Backend\\Data\\Data.csproj",
-        "packagesPath": "C:\\Users\\Decagon\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Decagon\\Documents\\GitHub\\DatingSite\\Backend\\Data\\obj\\",
+        "projectPath": "C:\\Users\\bsahe\\Documents\\Git_Project\\DatingSiteLatest\\Backend\\Data\\Data.csproj",
+        "packagesPath": "C:\\Users\\bsahe\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\bsahe\\Documents\\Git_Project\\DatingSiteLatest\\Backend\\Data\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Decagon\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\bsahe\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -28,8 +28,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\Decagon\\Documents\\GitHub\\DatingSite\\Backend\\Model\\Model.csproj": {
-                "projectPath": "C:\\Users\\Decagon\\Documents\\GitHub\\DatingSite\\Backend\\Model\\Model.csproj"
+              "C:\\Users\\bsahe\\Documents\\Git_Project\\DatingSiteLatest\\Backend\\Model\\Model.csproj": {
+                "projectPath": "C:\\Users\\bsahe\\Documents\\Git_Project\\DatingSiteLatest\\Backend\\Model\\Model.csproj"
               }
             }
           }
@@ -52,13 +52,13 @@
               "target": "Package",
               "version": "[6.0.0, )"
             },
-            "Microsoft.EntityFrameworkCore.Sqlite": {
-              "target": "Package",
-              "version": "[6.0.0, )"
-            },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
               "target": "Package",
               "version": "[6.0.0, )"
             },
@@ -83,21 +83,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Decagon\\Documents\\GitHub\\DatingSite\\Backend\\Model\\Model.csproj": {
+    "C:\\Users\\bsahe\\Documents\\Git_Project\\DatingSiteLatest\\Backend\\Model\\Model.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Decagon\\Documents\\GitHub\\DatingSite\\Backend\\Model\\Model.csproj",
+        "projectUniqueName": "C:\\Users\\bsahe\\Documents\\Git_Project\\DatingSiteLatest\\Backend\\Model\\Model.csproj",
         "projectName": "Model",
-        "projectPath": "C:\\Users\\Decagon\\Documents\\GitHub\\DatingSite\\Backend\\Model\\Model.csproj",
-        "packagesPath": "C:\\Users\\Decagon\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Decagon\\Documents\\GitHub\\DatingSite\\Backend\\Model\\obj\\",
+        "projectPath": "C:\\Users\\bsahe\\Documents\\Git_Project\\DatingSiteLatest\\Backend\\Model\\Model.csproj",
+        "packagesPath": "C:\\Users\\bsahe\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\bsahe\\Documents\\Git_Project\\DatingSiteLatest\\Backend\\Model\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Decagon\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\bsahe\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -148,7 +148,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     }

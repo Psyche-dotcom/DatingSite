@@ -1,4 +1,5 @@
-﻿using Data.Repository.Interface;
+﻿using Data.Context;
+using Data.Repository.Interface;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Model.DTO;
@@ -10,12 +11,15 @@ namespace Data.Repository.Implementation
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
-        public AccountRepo(UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager)
+        private readonly DatingSiteContext _context;
+
+        public AccountRepo(UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager, DatingSiteContext context)
         {
             _userManager = userManager;
             _roleManager = roleManager;
-
+            _context = context;
         }
+
         public async Task<bool> AddRoleAsync(ApplicationUser user, string Role)
         {
             var AddRole = await _userManager.AddToRoleAsync(user, Role);
@@ -25,6 +29,7 @@ namespace Data.Repository.Implementation
             }
             return false;
         }
+
         public async Task<bool> RemoveRoleAsync(ApplicationUser user, IList<string> role)
         {
             var removeRole = await _userManager.RemoveFromRolesAsync(user, role);
@@ -34,6 +39,7 @@ namespace Data.Repository.Implementation
             }
             return false;
         }
+
         public async Task<IList<string>> GetUserRoles(ApplicationUser user)
         {
             var getRoles = await _userManager.GetRolesAsync(user);
@@ -43,11 +49,13 @@ namespace Data.Repository.Implementation
             }
             return null;
         }
+
         public async Task<bool> RoleExist(string Role)
         {
             var check = await _roleManager.RoleExistsAsync(Role);
             return check;
         }
+
         public async Task<bool> UpdateLoginStatus(ApplicationUser user)
         {
             user.IsUserOnline = true;
@@ -58,6 +66,7 @@ namespace Data.Repository.Implementation
             }
             return false;
         }
+
         public async Task<bool> UpdateLogoutStatus(ApplicationUser user)
         {
             user.IsUserOnline = false;
@@ -68,6 +77,7 @@ namespace Data.Repository.Implementation
             }
             return false;
         }
+
         public async Task<bool> UpdateUserStatusTaken(ApplicationUser user)
         {
             user.UserIsTaken = true;
@@ -78,7 +88,7 @@ namespace Data.Repository.Implementation
             }
             return false;
         }
-       
+
         public async Task<bool> UpdateUserStatusNotTaken(ApplicationUser user)
         {
             user.UserIsTaken = false;
@@ -89,6 +99,7 @@ namespace Data.Repository.Implementation
             }
             return false;
         }
+
         public async Task<bool> ConfirmEmail(string token, ApplicationUser user)
         {
             var result = await _userManager.ConfirmEmailAsync(user, token);
@@ -130,44 +141,66 @@ namespace Data.Repository.Implementation
             var token = await _userManager.GeneratePasswordResetTokenAsync(user);
             return token;
         }
-        public async Task<PaginatedUser> GetAllUser(int pageNumber, int perPageSize)
+
+        public async Task<PaginatedUser> GetAllRegisteredUserAsync(int pageNumber, int perPageSize)
         {
-            var getAllUser = _userManager.Users;
             pageNumber = pageNumber < 1 ? 1 : pageNumber;
             perPageSize = perPageSize < 1 ? 5 : perPageSize;
-            var totalCount = getAllUser.Count();
-            var totalPages = (int)Math.Ceiling((double)totalCount / perPageSize);
-            var paginated = await getAllUser.Skip((pageNumber - 1) * perPageSize).Take(perPageSize).Select(User => new DisplayFindUserDTO
-            {
-                UserName = User.UserName,
-                Email = User.Email,
-                FirstName = User.FirstName,
-                LastName = User.LastName,
-                PhoneNumber = User.PhoneNumber,
-                ProfilePicture = User.ProfilePicture,
-                Gender = User.Gender,
-                Id = User.Id
-            }).ToListAsync();
 
+            var filteredCamgirl = _userManager.Users
+                .Join(
+                    _context.UserRoles,
+                    user => user.Id,
+                    userRole => userRole.UserId,
+                    (user, userRole) => new { User = user, UserRole = userRole })
+                .Join(
+                    _roleManager.Roles,
+                    userRole => userRole.UserRole.RoleId,
+                    role => role.Id,
+                    (userRole, role) => new { User = userRole.User, Role = role })
+                .Where(u => u.Role.Name == "USER")
+                .Select(u => new DisplayFindUserDTO
+                {
+                    UserName = u.User.UserName,
+                    Email = u.User.Email,
+                    FirstName = u.User.FirstName,
+                    LastName = u.User.LastName,
+                    PhoneNumber = u.User.PhoneNumber,
+                    ProfilePicture = u.User.ProfilePicture,
+                    Gender = u.User.Gender,
+                    Id = u.User.Id,
+                    TimeAvailable = u.User.TimeAvailable
+                });
+
+            var totalCount = await filteredCamgirl.CountAsync();
+            var totalPages = (int)Math.Ceiling((double)totalCount / perPageSize);
+
+            var paginatedCamgirl = await filteredCamgirl
+                .Skip((pageNumber - 1) * perPageSize)
+                .Take(perPageSize)
+                .ToListAsync();
             var result = new PaginatedUser
             {
                 CurrentPage = pageNumber,
                 PageSize = perPageSize,
                 TotalPages = totalPages,
-                User = paginated
+                User = paginatedCamgirl,
             };
             return result;
         }
+
         public async Task<bool> CheckEmailConfirmed(ApplicationUser user)
         {
             var checkConfirm = await _userManager.IsEmailConfirmedAsync(user);
             return checkConfirm;
         }
+
         public async Task<bool> CheckAccountPassword(ApplicationUser user, string password)
         {
             var checkUserPassword = await _userManager.CheckPasswordAsync(user, password);
             return checkUserPassword;
         }
+
         public async Task<ResetPassword> ResetPasswordAsync(ApplicationUser user, ResetPassword resetPassword)
         {
             var result = await _userManager.ResetPasswordAsync(user, resetPassword.Token, resetPassword.Password);
@@ -186,7 +219,6 @@ namespace Data.Repository.Implementation
                 return user;
             }
             return null;
-
         }
 
         public async Task<bool> UpdateUserInfo(ApplicationUser applicationUser)

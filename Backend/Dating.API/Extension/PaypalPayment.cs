@@ -7,7 +7,6 @@ namespace Dating.API.Extension
     {
         public static void ConfigurePayment(this IServiceCollection service, IConfiguration configuration)
         {
-           
             var paypalConfiguration = configuration.GetSection("PayPal").Get<Paypal>();
             var environment = new SandboxEnvironment(paypalConfiguration.ClientId, paypalConfiguration.Secret);
             service.AddSingleton(new PayPalHttpClient(environment));

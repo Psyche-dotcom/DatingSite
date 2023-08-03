@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using CloudinaryDotNet.Actions;
 using Data.Repository.Interface;
 using Dating.API.Service.Interface;
 using Model.DTO;
@@ -23,6 +22,7 @@ namespace Dating.API.Service.Implementation
             _generateJwt = generateJwt;
             _cloudinary = cloudinary;
         }
+
         public async Task<ResponseDto<string>> RegisterUser(SignUp signUp, string Role)
         {
             var response = new ResponseDto<string>();
@@ -73,9 +73,30 @@ namespace Dating.API.Service.Implementation
                 response.StatusCode = 500;
                 response.DisplayMessage = "Error";
                 return response;
-
             }
         }
+
+        public async Task<ResponseDto<PaginatedUser>> GetAllUsersAsync(int pageNumber, int perPageSize)
+        {
+            var response = new ResponseDto<PaginatedUser>();
+            try
+            {
+                var getCAMGIRL = await _accountRepo.GetAllRegisteredUserAsync(pageNumber, perPageSize);
+                response.StatusCode = StatusCodes.Status200OK;
+                response.DisplayMessage = "Success";
+                response.Result = getCAMGIRL;
+                return response;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message, ex);
+                response.ErrorMessages = new List<string>() { "Error in retrieving all camgirl" };
+                response.StatusCode = 500;
+                response.DisplayMessage = "Error";
+                return response;
+            }
+        }
+
         public async Task<ResponseDto<string>> LoginUser(SignInModel signIn)
         {
             var response = new ResponseDto<string>();
@@ -117,7 +138,6 @@ namespace Dating.API.Service.Implementation
                 response.DisplayMessage = "Successfully login";
                 response.Result = generateToken;
                 return response;
-
             }
             catch (Exception ex)
             {
@@ -128,6 +148,7 @@ namespace Dating.API.Service.Implementation
                 return response;
             }
         }
+
         public async Task<ResponseDto<string>> LogoutUser(string UserEmail)
         {
             var response = new ResponseDto<string>();
@@ -162,7 +183,6 @@ namespace Dating.API.Service.Implementation
                 response.DisplayMessage = "Success";
                 response.Result = "Successfully logout user";
                 return response;
-
             }
             catch (Exception ex)
             {
@@ -171,9 +191,9 @@ namespace Dating.API.Service.Implementation
                 response.StatusCode = 500;
                 response.DisplayMessage = "Error";
                 return response;
-
             }
         }
+
         public async Task<ResponseDto<string>> ForgotPassword(string UserEmail)
         {
             var response = new ResponseDto<string>();
@@ -186,7 +206,6 @@ namespace Dating.API.Service.Implementation
                     response.StatusCode = 404;
                     response.DisplayMessage = "Error";
                     return response;
-
                 }
                 var result = await _accountRepo.ForgotPassword(checkUser);
                 if (result == null)
@@ -210,6 +229,7 @@ namespace Dating.API.Service.Implementation
                 return response;
             }
         }
+
         public async Task<ResponseDto<string>> ResetUserPassword(ResetPassword resetPassword)
         {
             var response = new ResponseDto<string>();
@@ -235,7 +255,6 @@ namespace Dating.API.Service.Implementation
                 response.DisplayMessage = "Success";
                 response.Result = "Successfully reset user password";
                 return response;
-
             }
             catch (Exception ex)
             {
@@ -246,6 +265,7 @@ namespace Dating.API.Service.Implementation
                 return response;
             }
         }
+
         public async Task<ResponseDto<string>> DeleteUser(string email)
         {
             var response = new ResponseDto<string>();
@@ -281,6 +301,7 @@ namespace Dating.API.Service.Implementation
                 return response;
             }
         }
+
         public async Task<ResponseDto<string>> UpdateUser(string email, UpdateUserDto updateUser)
         {
             var response = new ResponseDto<string>();
@@ -296,7 +317,7 @@ namespace Dating.API.Service.Implementation
                 }
                 var mapUpdateDetails = _mapper.Map(updateUser, findUser);
                 var updateUserDetails = await _accountRepo.UpdateUserInfo(mapUpdateDetails);
-                if(updateUserDetails == false)
+                if (updateUserDetails == false)
                 {
                     response.ErrorMessages = new List<string>() { "Error in updating user info" };
                     response.StatusCode = StatusCodes.Status501NotImplemented;
@@ -317,6 +338,7 @@ namespace Dating.API.Service.Implementation
                 return response;
             }
         }
+
         public async Task<ResponseDto<string>> UploadUserProfilePicture(string email, IFormFile file)
         {
             var response = new ResponseDto<string>();
@@ -331,7 +353,7 @@ namespace Dating.API.Service.Implementation
                     return response;
                 }
                 var uploadImage = await _cloudinary.UploadPhoto(file, email);
-                if(uploadImage == null)
+                if (uploadImage == null)
                 {
                     response.ErrorMessages = new List<string>() { "Error in uploading profile picture for user" };
                     response.StatusCode = 501;
@@ -361,7 +383,8 @@ namespace Dating.API.Service.Implementation
                 return response;
             }
         }
-        public async Task<ResponseDto<string>> UpdateUserRole (string email, string role)
+
+        public async Task<ResponseDto<string>> UpdateUserRole(string email, string role)
         {
             var response = new ResponseDto<string>();
             try
@@ -383,7 +406,7 @@ namespace Dating.API.Service.Implementation
                     return response;
                 }
                 var getExistingRoles = await _accountRepo.GetUserRoles(findUser);
-                if(getExistingRoles.Count == 0)
+                if (getExistingRoles.Count == 0)
                 {
                     response.ErrorMessages = new List<string>() { "There is no role for this user" };
                     response.StatusCode = StatusCodes.Status404NotFound;
@@ -391,7 +414,7 @@ namespace Dating.API.Service.Implementation
                     return response;
                 }
                 var removeExistingRoles = await _accountRepo.RemoveRoleAsync(findUser, getExistingRoles);
-                if(removeExistingRoles == false)
+                if (removeExistingRoles == false)
                 {
                     response.ErrorMessages = new List<string>() { "Error in removing role for user" };
                     response.StatusCode = StatusCodes.Status400BadRequest;
@@ -410,7 +433,6 @@ namespace Dating.API.Service.Implementation
                 response.DisplayMessage = "Successful";
                 response.Result = "User role updated successfully";
                 return response;
-
             }
             catch (Exception ex)
             {
@@ -421,6 +443,5 @@ namespace Dating.API.Service.Implementation
                 return response;
             }
         }
-
     }
 }

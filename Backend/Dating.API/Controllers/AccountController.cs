@@ -1,4 +1,5 @@
 ﻿using Dating.API.Service.Interface;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Model.DTO;
 
@@ -18,9 +19,9 @@ namespace Dating.API.Controllers
         }
 
         [HttpPost("register")]
-        public async Task<IActionResult> Register(string role, SignUp signUp)
+        public async Task<IActionResult> Register(SignUp signUp)
         {
-            var registerUser = await _accountService.RegisterUser(signUp, role);
+            var registerUser = await _accountService.RegisterUser(signUp, "USER");
             if (registerUser.StatusCode == 200)
             {
                 return Ok(registerUser);
@@ -34,6 +35,26 @@ namespace Dating.API.Controllers
                 return BadRequest(registerUser);
             }
         }
+
+        [Authorize(AuthenticationSchemes = "Bearer", Roles = "ADMIN")]
+        [HttpPost("register/camgirl")]
+        public async Task<IActionResult> RegisterCamgirl(SignUp signUp)
+        {
+            var registerUser = await _accountService.RegisterUser(signUp, "CAMGIRL");
+            if (registerUser.StatusCode == 200)
+            {
+                return Ok(registerUser);
+            }
+            else if (registerUser.StatusCode == 404)
+            {
+                return NotFound(registerUser);
+            }
+            else
+            {
+                return BadRequest(registerUser);
+            }
+        }
+
         [HttpPost("login")]
         public async Task<IActionResult> Login(SignInModel signIn)
         {
@@ -51,6 +72,7 @@ namespace Dating.API.Controllers
                 return BadRequest(loginUser);
             }
         }
+
         [HttpPost("logout")]
         public async Task<IActionResult> Logout(string loginEmail)
         {
@@ -68,6 +90,7 @@ namespace Dating.API.Controllers
                 return BadRequest(result);
             }
         }
+
         [HttpPost("forgot_password")]
         public async Task<IActionResult> ForgotPassword(string email)
         {
@@ -87,8 +110,8 @@ namespace Dating.API.Controllers
             {
                 return BadRequest(result);
             }
-
         }
+
         [HttpPost("reset_password")]
         public async Task<IActionResult> ResetPassword(ResetPassword resetPassword)
         {
@@ -106,6 +129,8 @@ namespace Dating.API.Controllers
                 return BadRequest(result);
             }
         }
+
+        [Authorize(AuthenticationSchemes = "Bearer")]
         [HttpDelete("delete_user/{email}")]
         public async Task<IActionResult> DeleteUser(string email)
         {
@@ -123,6 +148,8 @@ namespace Dating.API.Controllers
                 return BadRequest(result);
             }
         }
+
+        [Authorize(AuthenticationSchemes = "Bearer")]
         [HttpPatch("update_details/{email}")]
         public async Task<IActionResult> UpdateUserInfo(string email, UpdateUserDto updateUser)
         {
@@ -140,6 +167,8 @@ namespace Dating.API.Controllers
                 return BadRequest(result);
             }
         }
+
+        [Authorize(AuthenticationSchemes = "Bearer")]
         [HttpPatch("update_picture/{email}")]
         public async Task<IActionResult> UploadUserPicture(string email, IFormFile file)
         {
@@ -157,6 +186,7 @@ namespace Dating.API.Controllers
                 return BadRequest(result);
             }
         }
+
         [HttpPatch("update_role/{email}")]
         public async Task<IActionResult> UpdateUserRoleAsync(string email, string role)
         {
@@ -175,5 +205,23 @@ namespace Dating.API.Controllers
             }
         }
 
+        [Authorize(AuthenticationSchemes = "Bearer", Roles = "ADMIN")]
+        [HttpGet("all/{per_page_size}/{page_number}")]
+        public async Task<IActionResult> GetAllUserAsync(int page_number, int per_page_size)
+        {
+            var result = await _accountService.GetAllUsersAsync(page_number, per_page_size);
+            if (result.StatusCode == 200)
+            {
+                return Ok(result);
+            }
+            else if (result.StatusCode == 404)
+            {
+                return NotFound(result);
+            }
+            else
+            {
+                return BadRequest(result);
+            }
+        }
     }
 }
