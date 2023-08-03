@@ -4,11 +4,13 @@ import CustomModal from "./CustomModal";
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import useSWR from "swr";
 
-import PurchaseTime from "./PurchaseTime";
 import PurchaseTimeModal from "./PurchaseTimeModal";
-
+import { fetcher } from "@/service/apiCalls/Fetcher";
 function ClockBalanceDropDown() {
+  // const { data, error } = useSWR("/api/data1", fetcher);
+
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [balanceModal, setBalanceModal] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -31,7 +33,12 @@ function ClockBalanceDropDown() {
   return (
     <div>
       <button onClick={handleOpen} className="text-center md:hidden">
-        <Image src="/favicon_io/time-3487.svg" height={30} width={30} />
+        <Image
+          src="/favicon_io/time-3487.svg"
+          height={30}
+          width={30}
+          alt="A clock icon"
+        />
       </button>
       <Menu
         anchorEl={anchorEl}
@@ -41,6 +48,7 @@ function ClockBalanceDropDown() {
       >
         <div>
           <MenuItem onClick={handleClose}>0 minutes</MenuItem>
+          {/* <MenuItem onClick={handleClose}>{data} minutes</MenuItem> */}
           <MenuItem className="text-pink" onClick={showMinuteModal}>
             Buy minutes
           </MenuItem>

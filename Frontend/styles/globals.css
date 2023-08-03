@@ -233,12 +233,53 @@ body {
   font-weight: bold;
   cursor: pointer;
 }
+
+.blog-container {
+  background-color: #fff;
+  padding: 2rem;
+}
+
+.blog_container {
+  margin: 4rem;
+  background-color: #fff;
+  border-radius: 12px;
+}
+
+.blog-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+}
+/* className=" text-black font-bold rounded-lg w-full md:w-1/4 py-2 shadow-md" */
+.blog-btn {
+  color: #000;
+  font-weight: 600;
+  border-radius: 8px;
+  width: 100%;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+.registration-container {
+  background-color: #fff;
+}
+.invite-bg-image {
+  background-image: url(https://c4.wallpaperflare.com/wallpaper/771/370/503/hot-girl-images-for-backgrounds-desktop-wallpaper-preview.jpg);
+  /* background-size: cov; */
+}
 @media (max-width: 499px) {
   .modal-header {
     font-size: 20px;
     text-align: center;
     letter-spacing: 0.4px;
     margin: 10px;
+  }
+}
+@media (min-width: 1280px) {
+  .blog-container {
+    margin: 0 4rem;
+  }
+  .registration-container {
+    padding: 4rem;
   }
 }
 /* @media () */

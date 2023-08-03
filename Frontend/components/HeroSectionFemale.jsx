@@ -149,7 +149,7 @@ export default function HerosectionFemale() {
     setEmail(value);
   };
   const handlePasswordChange = (value) => {
-    // setShowAccountDetails(value);
+    setShowForgotModal(value);
   };
   const handleUsernameChange = (value) => {
     setUsername(value);
@@ -278,9 +278,7 @@ export default function HerosectionFemale() {
           onValueForgotChange={handleForgotChange}
         />
       )}
-      {showForgotModal && (
-        <ForgotPasswordModal onValueForgotClose={handleValueForgotClose} />
-      )}
+
       {showSignupModal && <SignUpModal onClosedChange={handleClosedChange} />}
       {showAccountDetails && (
         <AccountDetailsModal
@@ -289,6 +287,9 @@ export default function HerosectionFemale() {
           onValueMailChange={handleMailChange}
           onValuePasswordChange={handlePasswordChange}
         />
+      )}
+      {showForgotModal && (
+        <ForgotPasswordModal onValueForgotClose={handleValueForgotClose} />
       )}
       {username && <UserName onValueUsernameChange={handleUsernameChange} />}
       {email && <EmailModal onValueEmailChange={handleEmailChange} />}

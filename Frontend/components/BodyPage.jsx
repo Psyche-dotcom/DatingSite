@@ -19,6 +19,7 @@ export default function BodyPage() {
             height={400}
             width={600}
             className="w-full"
+            alt="An image of users video-chatting"
           />
         </div>
         <div className="w-full">
@@ -54,6 +55,7 @@ export default function BodyPage() {
             height={400}
             width={600}
             className="w-full"
+            alt="A chat image"
           />
         </div>
       </section>
@@ -64,6 +66,7 @@ export default function BodyPage() {
             height={400}
             width={600}
             className="w-full"
+            alt="A match-making image"
           />
         </div>
         <div className="w-full">

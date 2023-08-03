@@ -16,7 +16,9 @@ const IframePage = () => {
       <button onClick={handleButtonClick}>Show Iframe</button>
       <button onClick={handleButtonCloseClick}>Close iframe</button>
       {showIframe && (
-        <iframe src="https://www.example.com" width="600" height="400"></iframe>
+        <iframe width="600" height="400">
+          <p className="text-black">Hello world!</p>
+        </iframe>
       )}
     </div>
   );

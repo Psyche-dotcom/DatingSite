@@ -1,3 +1,8 @@
+import React from "react";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
+import { postData } from "@/service/apiCalls/Fetcher";
+
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
@@ -17,6 +22,42 @@ export default function SignupLogin({
   const successChange = true;
   const [login, setLogin] = useState(log);
   const [signup, setSignup] = useState(sign);
+  //Signup form initial values
+
+  const initialSignupValues = {
+    email: "",
+    username: "",
+    password: "",
+    agreement: false,
+  };
+  //Signup form scheme
+
+  const signupValidationSchema = Yup.object({
+    email: Yup.string()
+      .email("Invalid email format")
+      .required("Email is required"),
+    username: Yup.string().required("Username is required"),
+    password: Yup.string().required("Password is required"),
+    agreement: Yup.boolean().oneOf(
+      [true],
+      "You must agree to the terms and conditions"
+    ),
+  });
+
+  //Login form initial values
+
+  const initialLoginValues = {
+    email: "",
+    password: "",
+  };
+
+  // Login Form Validation Schema
+  const loginValidationSchema = Yup.object({
+    email: Yup.string()
+      .email("Invalid email format")
+      .required("Email is required"),
+    password: Yup.string().required("Password is required"),
+  });
 
   const [isOpen, setIsOpen] = useState(false);
   const showLogin = () => {
@@ -43,7 +84,45 @@ export default function SignupLogin({
     onValueSignChange(value);
     e.preventDefault();
   };
+  const handleSignupSubmit = async (values) => {
+    try {
+      // const url = "https://example.com/api/signup"; // Replace with your signup API endpoint
+      console.log(values.email);
+      console.log(values.username);
+      console.log(values.password);
 
+      // Use the postData function to make the POST request
+      // const response = await postData(url, values);
+
+      // Handle the response if needed
+      // console.log('POST request successful:', response);
+
+      onValueSignChange(value);
+      onValueSignupSuccessChange(successChange);
+    } catch (error) {
+      // Handle errors
+      // console.error('Error making POST request:', error);
+    }
+  };
+
+  const handleLoginSubmit = async (values) => {
+    try {
+      // const url = "https://example.com/api/login"; // Replace with your login API endpoint
+      console.log(values.email);
+      console.log(values.password);
+
+      // Use the postData function to make the POST request
+      // const response = await postData(url, values);
+
+      // Handle the response if needed
+      // console.log('POST request successful:', response);
+
+      onValueSignChange(value);
+    } catch (error) {
+      // Handle errors
+      // console.error('Error making POST request:', error);
+    }
+  };
   return (
     <div className=" border-b-2 py-2 md:border-0">
       <div className="modal-overlay">
@@ -74,7 +153,7 @@ export default function SignupLogin({
                 className="pd-sm m-auto overflow-scroll overflow-x-hidden"
                 style={{ height: "75%" }}
               >
-                <form className="register text-start">
+                {/* <form className="register text-start">
                   <div className="mb-4">
                     <label for="email" className="mb-3">
                       Email
@@ -123,7 +202,96 @@ export default function SignupLogin({
                   >
                     Sign Up
                   </button>
-                </form>
+                </form> */}
+                <Formik
+                  initialValues={initialSignupValues}
+                  validationSchema={signupValidationSchema}
+                  onSubmit={handleSignupSubmit}
+                >
+                  {({ isValid }) => (
+                    <Form className="register text-start">
+                      <div className="mb-4">
+                        <label htmlFor="email" className="mb-3">
+                          Email
+                        </label>
+                        <Field type="text" name="email" placeholder="Email" />
+                        <ErrorMessage
+                          name="email"
+                          component="span"
+                          style={{ color: "red" }}
+                        />
+                      </div>
+                      <div className="mb-4">
+                        <label htmlFor="username" className="mb-3">
+                          Username
+                        </label>
+                        <Field
+                          type="text"
+                          name="username"
+                          placeholder="Username"
+                          className="w-full"
+                        />
+                        <ErrorMessage
+                          name="username"
+                          component="span"
+                          style={{ color: "red" }}
+                        />
+                      </div>
+                      <div className="mb-4">
+                        <label htmlFor="password" className="mb-3">
+                          Password
+                        </label>
+                        <Field
+                          type="password"
+                          name="password"
+                          placeholder="password"
+                          className="w-full"
+                        />
+                        <ErrorMessage
+                          name="password"
+                          component="span"
+                          style={{ color: "red" }}
+                        />
+                      </div>
+                      <div className="mb-5 flex items-center">
+                        <div
+                          style={{ width: "40px" }}
+                          className="mr-4 self-center"
+                        >
+                          <Field
+                            type="checkbox"
+                            className="accept"
+                            name="agreement"
+                          />
+                          <ErrorMessage
+                            name="agreement"
+                            component="span"
+                            style={{ color: "red", display: "block" }}
+                          />
+                        </div>
+                        <p>
+                          I am over 18 years old and I accept the{" "}
+                          <Link
+                            className="text-pink ml-auto"
+                            target="_blank"
+                            href="/"
+                          >
+                            Terms & Conditions.
+                          </Link>
+                        </p>
+                      </div>
+                      <button
+                        className={`rounded-md bg-pink text-white font-extrabold py-4 px-10 mb-4 ${
+                          !isValid ? "opacity-50 cursor-not-allowed" : ""
+                        }`}
+                        type="submit"
+                        // disabled={!isValid}
+                      >
+                        Sign Up
+                      </button>
+                    </Form>
+                  )}
+                </Formik>
                 <button className="text-pink underline" onClick={showLogin}>
                   I already have an account
                 </button>
@@ -134,7 +302,7 @@ export default function SignupLogin({
                 className="pd-sm m-auto text-start overflow-scroll overflow-x-hidden"
                 style={{ height: "75%" }}
               >
-                <form className="register">
+                {/* <form className="register">
                   <div className="mb-4">
                     <label for="email">Email</label>
                     <input type="text" placeholder="Email" />
@@ -159,7 +327,51 @@ export default function SignupLogin({
                   >
                     Login
                   </button>
-                </form>
+                </form> */}
+                <Formik
+                  initialValues={initialLoginValues}
+                  validationSchema={loginValidationSchema}
+                  onSubmit={handleLoginSubmit}
+                >
+                  <Form className="register">
+                    <div className="mb-4">
+                      <label htmlFor="email">Email</label>
+                      <Field type="text" name="email" placeholder="Email" />
+                      <ErrorMessage
+                        name="email"
+                        component="span"
+                        style={{ color: "red" }}
+                      />
+                    </div>
+                    <div className="mb-4">
+                      <label htmlFor="password">Password</label>
+                      <Field
+                        type="password"
+                        name="password"
+                        placeholder="Password"
+                        className="w-full"
+                      />
+                      <ErrorMessage
+                        name="password"
+                        component="span"
+                        style={{ color: "red" }}
+                      />
+                    </div>
+                    <button
+                      className="text-pink underline block mb-4"
+                      onClick={handleIsForgotOpen}
+                      type="button"
+                    >
+                      Forgot Password
+                    </button>
+                    <button
+                      className="rounded-md bg-pink text-white font-extrabold py-4 px-10 mb-4 block"
+                      type="submit"
+                    >
+                      Login
+                    </button>
+                  </Form>
+                </Formik>
                 {/* </form> */}
                 <button className="text-pink underline" onClick={showSignup}>
                   Create an account

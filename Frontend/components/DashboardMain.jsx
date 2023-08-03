@@ -28,7 +28,12 @@ const DashboardMain = () => {
             href="#"
             className="flex gap-2 items-center rounded-md px-4 py-2 bg-grey"
           >
-            <Image src="/favicon_io/plus.svg" height={16} width={16} />
+            <Image
+              src="/favicon_io/plus.svg"
+              height={16}
+              width={16}
+              alt="Add icon"
+            />
             <h6>New Member</h6>
           </Link>
         </div>
@@ -50,6 +55,7 @@ const DashboardMain = () => {
                     height={45}
                     width={45}
                     className="rounded-md"
+                    alt="User image"
                   />
                   <div>
                     <p className="text-h6">Ana Simmons</p>
@@ -70,13 +76,28 @@ const DashboardMain = () => {
               </td>
               <td className="flex items-center gap-2">
                 <div className="icon">
-                  <Image src="/asset/loading-bar.png" height={16} width={16} />
+                  <Image
+                    src="/asset/loading-bar.png"
+                    height={16}
+                    width={16}
+                    alt="Progress-bar icon"
+                  />
                 </div>
                 <div className="icon">
-                  <Image src="/asset/pencil.png" height={16} width={16} />
+                  <Image
+                    src="/asset/pencil.png"
+                    height={16}
+                    width={16}
+                    alt="Edit icon"
+                  />
                 </div>
                 <div className="icon">
-                  <Image src="/asset/delete.png" height={16} width={16} />
+                  <Image
+                    src="/asset/delete.png"
+                    height={16}
+                    width={16}
+                    alt="Delete icon"
+                  />
                 </div>
               </td>
             </tr>
@@ -88,6 +109,7 @@ const DashboardMain = () => {
                     height={45}
                     width={45}
                     className="rounded-md"
+                    alt="User icon"
                   />
                   <div>
                     <p className="text-h6">Ana Simmons</p>
@@ -108,13 +130,28 @@ const DashboardMain = () => {
               </td>
               <td className="flex items-center gap-2">
                 <div className="icon">
-                  <Image src="/asset/loading-bar.png" height={16} width={16} />
+                  <Image
+                    src="/asset/loading-bar.png"
+                    height={16}
+                    width={16}
+                    alt="Progress-bar icon"
+                  />
                 </div>
                 <div className="icon">
-                  <Image src="/asset/pencil.png" height={16} width={16} />
+                  <Image
+                    src="/asset/pencil.png"
+                    height={16}
+                    width={16}
+                    alt="Edit icon"
+                  />
                 </div>
                 <div className="icon">
-                  <Image src="/asset/delete.png" height={16} width={16} />
+                  <Image
+                    src="/asset/delete.png"
+                    height={16}
+                    width={16}
+                    alt="Delete icon"
+                  />
                 </div>
               </td>
             </tr>
@@ -126,6 +163,7 @@ const DashboardMain = () => {
                     height={45}
                     width={45}
                     className="rounded-md"
+                    alt="User icon"
                   />
                   <div>
                     <p className="text-h6">Ana Simmons</p>
@@ -146,13 +184,28 @@ const DashboardMain = () => {
               </td>
               <td className="flex items-center gap-2">
                 <div className="icon">
-                  <Image src="/asset/loading-bar.png" height={16} width={16} />
+                  <Image
+                    src="/asset/loading-bar.png"
+                    height={16}
+                    width={16}
+                    alt="Progress-bar icon"
+                  />
                 </div>
                 <div className="icon">
-                  <Image src="/asset/pencil.png" height={16} width={16} />
+                  <Image
+                    src="/asset/pencil.png"
+                    height={16}
+                    width={16}
+                    alt="Edit icon"
+                  />
                 </div>
                 <div className="icon">
-                  <Image src="/asset/delete.png" height={16} width={16} />
+                  <Image
+                    src="/asset/delete.png"
+                    height={16}
+                    width={16}
+                    alt="Delete icon"
+                  />
                 </div>
               </td>
             </tr>
@@ -164,6 +217,7 @@ const DashboardMain = () => {
                     height={45}
                     width={45}
                     className="rounded-md"
+                    alt="User icon"
                   />
                   <div>
                     <p className="text-h6">Ana Simmons</p>
@@ -184,13 +238,28 @@ const DashboardMain = () => {
               </td>
               <td className="flex items-center gap-2">
                 <div className="icon">
-                  <Image src="/asset/loading-bar.png" height={16} width={16} />
+                  <Image
+                    src="/asset/loading-bar.png"
+                    height={16}
+                    width={16}
+                    alt="Progress-bar icon"
+                  />
                 </div>
                 <div className="icon">
-                  <Image src="/asset/pencil.png" height={16} width={16} />
+                  <Image
+                    src="/asset/pencil.png"
+                    height={16}
+                    width={16}
+                    alt="Edit icon"
+                  />
                 </div>
                 <div className="icon">
-                  <Image src="/asset/delete.png" height={16} width={16} />
+                  <Image
+                    src="/asset/delete.png"
+                    height={16}
+                    width={16}
+                    alt="Delete icon"
+                  />
                 </div>
               </td>
             </tr>
@@ -202,6 +271,7 @@ const DashboardMain = () => {
                     height={45}
                     width={45}
                     className="rounded-md"
+                    alt="User icon"
                   />
                   <div>
                     <p className="text-h6">Ana Simmons</p>
@@ -222,13 +292,28 @@ const DashboardMain = () => {
               </td>
               <td className="flex items-center gap-2">
                 <div className="icon">
-                  <Image src="/asset/loading-bar.png" height={16} width={16} />
+                  <Image
+                    src="/asset/loading-bar.png"
+                    height={16}
+                    width={16}
+                    alt="Progress-bar icon"
+                  />
                 </div>
                 <div className="icon">
-                  <Image src="/asset/pencil.png" height={16} width={16} />
+                  <Image
+                    src="/asset/pencil.png"
+                    height={16}
+                    width={16}
+                    alt="Edit icon"
+                  />
                 </div>
                 <div className="icon">
-                  <Image src="/asset/delete.png" height={16} width={16} />
+                  <Image
+                    src="/asset/delete.png"
+                    height={16}
+                    width={16}
+                    alt="Delete icon"
+                  />
                 </div>
               </td>
             </tr>
