@@ -1,213 +1,3 @@
-// import { postData } from "@/service/apiCalls/Fetcher";
-// import { useState } from "react";
-
-// export default function SignupFemale({ onValueCloseSignChange }) {
-//   const [formData, setFormData] = useState({
-//     name: "",
-//     email: "",
-//     password: "",
-//     agreement: "",
-//   });
-//   const value = false;
-//   const [errors, setErrors] = useState({ name: "", email: "" });
-//   const closeModal = () => {
-//     onValueCloseSignChange(value);
-//   };
-
-//   const handleChange = (e) => {
-//     const { name, value, type, checked } = e.target;
-//     if (type === "checked") {
-//       setFormData((prevData) => ({
-//         ...prevData,
-//         [name]: checked,
-//       }));
-//       setErrors((prevErrors) => ({
-//         ...prevErrors,
-//         agreement: "",
-//       }));
-//     } else {
-//       setFormData((prevData) => ({
-//         ...prevData,
-//         [name]: value,
-//       }));
-//     }
-//     setErrors((prevErrors) => ({
-//       ...prevErrors,
-//       [name]: "",
-//     }));
-//   };
-//   const validateForm = () => {
-//     let isValid = true;
-//     const updatedErrors = {};
-
-//     if (formData.name.trim() === "") {
-//       updatedErrors.name = "Name is required";
-//       isValid = false;
-//     }
-//     if (formData.password.trim() === "") {
-//       updatedErrors.password = "Password is required";
-//       isValid = false;
-//     }
-
-//     if (formData.email.trim() === "") {
-//       updatedErrors.email = "Email is required";
-//       isValid = false;
-//     } else if (!isValidEmail(formData.email)) {
-//       updatedErrors.email = "Invalid email format";
-//       isValid = false;
-//     }
-//     if (!formData.agreement) {
-//       updatedErrors.agreement = "You must agree to the terms and conditions";
-//       isValid = false;
-//     }
-
-//     setErrors(updatedErrors);
-//     return isValid;
-//   };
-//   const isValidEmail = (email) => {
-//     // Basic email format validation using a regular expression
-//     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-//     return emailRegex.test(email);
-//   };
-//   const handleSubmit = async (e) => {
-//     e.preventDefault();
-//     if (validateForm())
-//       try {
-//         const url = "https://example.com/api/users";
-//         console.log(formData.name);
-//         console.log(formData.email);
-//         console.log(formData.password);
-//         onValueCloseSignChange(value);
-//         // Use the postData function to make the POST request
-//         // const response = await postData(url, formData);
-
-//         // Handle the response if needed
-//         // console.log('POST request successful:', response);
-//       } catch (error) {
-//         // Handle errors
-//         // console.error('Error making POST request:', error);
-//       }
-//   };
-//   return (
-//     <div className="modal-overlay">
-//       <div
-//         className=" border-b-2 py-2 md:border-0 m-auto bg-white overflow-scroll"
-//         style={{ height: "75%" }}
-//       >
-//         <button onClick={closeModal} className="btn-custom">
-//           Close
-//         </button>
-//         <div className="pd-sm">
-//           <h3 className="font-semibold text-3xl">My account</h3>
-//           <p>Welcome! Let's start by creating an account.</p>
-//           <p>It only takes 3 minutes!</p>
-//           <form className="female-register" onSubmit={handleSubmit}>
-//             <div className="mb-4">
-//               <label for="username" className="mb-3">
-//                 Username
-//               </label>
-//               <input
-//                 type="text"
-//                 name="name"
-//                 placeholder="Username"
-//                 className="w-full"
-//                 value={formData.name}
-//                 onChange={handleChange}
-//               />
-//               {errors.name && (
-//                 <span style={{ color: "red" }}>{errors.name}</span>
-//               )}
-//             </div>
-//             <div className="mb-4">
-//               <label for="email" className="mb-3">
-//                 Email
-//               </label>
-//               <input
-//                 type="email"
-//                 name="email"
-//                 placeholder="Email"
-//                 className="w-full"
-//                 value={formData.email}
-//                 onChange={handleChange}
-//               />
-//               {errors.email && (
-//                 <span style={{ color: "red" }}>{errors.email}</span>
-//               )}
-//             </div>
-//             <div className="mb-4">
-//               <label for="email" className="mb-3">
-//                 Email
-//               </label>
-//               <input
-//                 type="email"
-//                 name="email"
-//                 placeholder="Email"
-//                 className="w-full"
-//                 value={formData.email}
-//                 onChange={handleChange}
-//               />
-//             </div>
-//             <div className="mb-4">
-//               <label for="confirm email" className="mb-3">
-//                 Confirm email
-//               </label>
-//               <input
-//                 type="email"
-//                 placeholder="Confirm Email"
-//                 className="w-full"
-//               />
-//             </div>
-//             <div className="mb-4">
-//               <label for="password" className="mb-3">
-//                 Password
-//               </label>
-//               <input
-//                 type="password"
-//                 name="password"
-//                 placeholder="password"
-//                 className="w-full"
-//                 value={formData.password}
-//                 onChange={handleChange}
-//               />
-//               {errors.password && (
-//                 <span style={{ color: "red" }}>{errors.password}</span>
-//               )}
-//             </div>
-//             <div className="mb-5 flex gap-4">
-//               <div>
-//                 <input
-//                   type="checkbox"
-//                   className="accept w-1/4"
-//                   name="agreement"
-//                   checked={formData.agreement}
-//                   onChange={handleChange}
-//                 />
-//                 {errors.agreement && (
-//                   <span style={{ color: "red", display: "block" }}>
-//                     {errors.agreement}
-//                   </span>
-//                 )}
-//               </div>
-//               <p>
-//                 I am over 18 years old and I accept the{" "}
-//                 <button className="text-pink ml-auto">
-//                   Terms & Conditions.
-//                 </button>
-//               </p>
-//             </div>
-//             <button className="text-pink underline mr-4" onClick={closeModal}>
-//               Back
-//             </button>
-//             <button className="btn-custom" type="submit">
-//               Next
-//             </button>
-//           </form>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
-
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
@@ -220,21 +10,37 @@ const SignupFemale = ({ onValueCloseSignChange }) => {
   };
 
   const initialValues = {
-    name: "",
+    firstName: "",
+    lastName: "",
+    location: "",
+    age: 0,
+    userName: "",
     email: "",
+    phoneNumber: "",
     password: "",
+    confirmPassword: "",
+    gender: "female",
     agreement: false,
   };
 
   const validationSchema = Yup.object({
-    name: Yup.string().required("Name is required"),
+    firstName: Yup.string().required("Firstname is required"),
+    lastName: Yup.string().required("Lastname is required"),
+    location: Yup.string().required("Location is required"),
+
+    phoneNumber: Yup.string().required("Phonenumber is required"),
+    // gender: Yup.string().required("Gender is required"),
+
     email: Yup.string()
       .email("Invalid email format")
       .required("Email is required"),
-    password: Yup.string().required("Password is required"),
-    confirmEmail: Yup.string()
-      .oneOf([Yup.ref("email"), null], "Emails must match")
-      .required("Confirm email is required"),
+    userName: Yup.string().required("Username is required"),
+    password: Yup.string()
+      .required("Password is required, should be greater than 6")
+      .min(6, "Password must be at least 6 characters"),
+    confirmPassword: Yup.string()
+      .required("Confirm password is required")
+      .oneOf([Yup.ref("password"), null], "Passwords must match"),
     agreement: Yup.boolean().oneOf(
       [true],
       "You must agree to the terms and conditions"
@@ -243,7 +49,7 @@ const SignupFemale = ({ onValueCloseSignChange }) => {
 
   const handleSubmit = async (values) => {
     try {
-      const url = "https://example.com/api/users";
+      // const url = "https://example.com/api/users";
       console.log(values.name);
       console.log(values.email);
       console.log(values.password);
@@ -279,17 +85,81 @@ const SignupFemale = ({ onValueCloseSignChange }) => {
           >
             <Form className="female-register">
               <div className="mb-4">
-                <label htmlFor="name" className="mb-3">
+                <label htmlFor="firstName" className="mb-3">
+                  Firstname
+                </label>
+                <Field
+                  type="text"
+                  name="firstName"
+                  placeholder="Firstname"
+                  className="w-full"
+                />
+                <ErrorMessage
+                  name="firstName"
+                  component="span"
+                  style={{ color: "red" }}
+                />
+              </div>
+              <div className="mb-4">
+                <label htmlFor="lastName" className="mb-3">
+                  Lastname
+                </label>
+                <Field
+                  type="text"
+                  name="lastName"
+                  placeholder="Lastname"
+                  className="w-full"
+                />
+                <ErrorMessage
+                  name="lastName"
+                  component="span"
+                  style={{ color: "red" }}
+                />
+              </div>
+              <div className="mb-4">
+                <label htmlFor="location" className="mb-3">
+                  Location
+                </label>
+                <Field
+                  type="text"
+                  name="location"
+                  placeholder="Location"
+                  className="w-full"
+                />
+                <ErrorMessage
+                  name="location"
+                  component="span"
+                  style={{ color: "red" }}
+                />
+              </div>
+              <div className="mb-4">
+                <label htmlFor="age" className="mb-3">
+                  Age
+                </label>
+                <Field
+                  type="number"
+                  name="age"
+                  placeholder="Location"
+                  className="w-full"
+                />
+                <ErrorMessage
+                  name="age"
+                  component="span"
+                  style={{ color: "red" }}
+                />
+              </div>
+              <div className="mb-4">
+                <label htmlFor="userName" className="mb-3">
                   Username
                 </label>
                 <Field
                   type="text"
-                  name="name"
+                  name="userName"
                   placeholder="Username"
                   className="w-full"
                 />
                 <ErrorMessage
-                  name="name"
+                  name="userName"
                   component="span"
                   style={{ color: "red" }}
                 />
@@ -326,6 +196,23 @@ const SignupFemale = ({ onValueCloseSignChange }) => {
                   style={{ color: "red" }}
                 />
               </div>
+
+              <div className="mb-4">
+                <label htmlFor="phoneNumber" className="mb-3">
+                  Phone number
+                </label>
+                <Field
+                  type="text"
+                  name="phoneNumber"
+                  placeholder="Phone number"
+                  className="w-full"
+                />
+                <ErrorMessage
+                  name="phoneNumber"
+                  component="span"
+                  style={{ color: "red" }}
+                />
+              </div>
               <div className="mb-4">
                 <label htmlFor="password" className="mb-3">
                   Password
@@ -338,6 +225,22 @@ const SignupFemale = ({ onValueCloseSignChange }) => {
                 />
                 <ErrorMessage
                   name="password"
+                  component="span"
+                  style={{ color: "red" }}
+                />
+              </div>
+              <div className="mb-4">
+                <label htmlFor="confirmpassword" className="mb-3">
+                  Confirm password
+                </label>
+                <Field
+                  type="password"
+                  name="confirmPassword"
+                  placeholder="Confirm password"
+                  className="w-full"
+                />
+                <ErrorMessage
+                  name="confirmPassword"
                   component="span"
                   style={{ color: "red" }}
                 />

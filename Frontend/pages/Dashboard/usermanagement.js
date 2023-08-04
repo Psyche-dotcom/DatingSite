@@ -27,13 +27,11 @@ const UserPage = () => {
                   />
                   <div>
                     <p className="text-h6">Ana Simmons</p>
-                    <p>HTML, JS, ReactJS</p>
                   </div>
                 </div>
               </td>
               <td>
                 <p className="text-h6">Intertico</p>
-                <p>Web, UI/UX, Design</p>
               </td>
               <td className="flex items-center gap-2">
                 <div className="icon">
@@ -66,13 +64,11 @@ const UserPage = () => {
                   />
                   <div>
                     <p className="text-h6">Ana Simmons</p>
-                    <p>HTML, JS, ReactJS</p>
                   </div>
                 </div>
               </td>
               <td>
                 <p className="text-h6">Intertico</p>
-                <p>Web, UI/UX, Design</p>
               </td>
 
               <td className="flex items-center gap-2">
@@ -106,13 +102,11 @@ const UserPage = () => {
                   />
                   <div>
                     <p className="text-h6">Ana Simmons</p>
-                    <p>HTML, JS, ReactJS</p>
                   </div>
                 </div>
               </td>
               <td>
                 <p className="text-h6">Intertico</p>
-                <p>Web, UI/UX, Design</p>
               </td>
 
               <td className="flex items-center gap-2">
@@ -146,13 +140,11 @@ const UserPage = () => {
                   />
                   <div>
                     <p className="text-h6">Ana Simmons</p>
-                    <p>HTML, JS, ReactJS</p>
                   </div>
                 </div>
               </td>
               <td>
                 <p className="text-h6">Intertico</p>
-                <p>Web, UI/UX, Design</p>
               </td>
 
               <td className="flex items-center gap-2">
@@ -186,13 +178,11 @@ const UserPage = () => {
                   />
                   <div>
                     <p className="text-h6">Ana Simmons</p>
-                    <p>HTML, JS, ReactJS</p>
                   </div>
                 </div>
               </td>
               <td>
                 <p className="text-h6">Intertico</p>
-                <p>Web, UI/UX, Design</p>
               </td>
 
               <td className="flex items-center gap-2">

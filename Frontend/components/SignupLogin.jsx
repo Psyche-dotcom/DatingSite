@@ -25,23 +25,42 @@ export default function SignupLogin({
   //Signup form initial values
 
   const initialSignupValues = {
+    firstName: "",
+    lastName: "",
+    location: "",
+    age: 0,
+    userName: "",
     email: "",
-    username: "",
+    phoneNumber: "",
     password: "",
-    agreement: false,
+    confirmPassword: "",
+    gender: 0,
+    // agreement: false,
   };
   //Signup form scheme
 
   const signupValidationSchema = Yup.object({
+    firstName: Yup.string().required("Firstname is required"),
+    lastName: Yup.string().required("Lastname is required"),
+    location: Yup.string().required("Location is required"),
+    age: Number(Yup.string().required("Username is required")),
+    phoneNumber: Yup.string().required("Phonenumber is required"),
+    // gender: Yup.string().required("Gender is required"),
+
     email: Yup.string()
       .email("Invalid email format")
       .required("Email is required"),
-    username: Yup.string().required("Username is required"),
-    password: Yup.string().required("Password is required"),
-    agreement: Yup.boolean().oneOf(
-      [true],
-      "You must agree to the terms and conditions"
-    ),
+    userName: Yup.string().required("Username is required"),
+    password: Yup.string()
+      .required("Password is required, should be greater than 6")
+      .min(6, "Password must be at least 6 characters"),
+    confirmPassword: Yup.string()
+      .required("Confirm password is required")
+      .oneOf([Yup.ref("password"), null], "Passwords must match"),
+    // agreement: Yup.boolean().oneOf(
+    //   [true],
+    //   "You must agree to the terms and conditions"
+    // ),
   });
 
   //Login form initial values
@@ -86,41 +105,49 @@ export default function SignupLogin({
   };
   const handleSignupSubmit = async (values) => {
     try {
-      // const url = "https://example.com/api/signup"; // Replace with your signup API endpoint
+      const url = "https://ukcrushreal.onrender.com/api/user/register";
       console.log(values.email);
-      console.log(values.username);
+      console.log(values.userName);
       console.log(values.password);
+      console.log(values.confirmPassword);
+      console.log(values.firstName);
+      console.log(values.lastName);
+      console.log(values.location);
+      console.log(values.age);
+      console.log(values.phoneNumber);
+      console.log(values.gender);
+      console.log(typeof values);
 
       // Use the postData function to make the POST request
-      // const response = await postData(url, values);
+      const response = await postData(url, values);
 
       // Handle the response if needed
-      // console.log('POST request successful:', response);
+      console.log("POST request successful:", response);
 
       onValueSignChange(value);
       onValueSignupSuccessChange(successChange);
     } catch (error) {
       // Handle errors
-      // console.error('Error making POST request:', error);
+      console.error("Error making POST request:", error);
     }
   };
 
   const handleLoginSubmit = async (values) => {
     try {
-      // const url = "https://example.com/api/login"; // Replace with your login API endpoint
+      const url = "https://ukcrushreal.onrender.com/api/user/login";
       console.log(values.email);
       console.log(values.password);
 
       // Use the postData function to make the POST request
-      // const response = await postData(url, values);
+      const response = await postData(url, values);
 
       // Handle the response if needed
-      // console.log('POST request successful:', response);
+      console.log("POST request successful:", response);
 
       onValueSignChange(value);
     } catch (error) {
       // Handle errors
-      // console.error('Error making POST request:', error);
+      console.error("Error making POST request:", error);
     }
   };
   return (
@@ -153,56 +180,6 @@ export default function SignupLogin({
                 className="pd-sm m-auto overflow-scroll overflow-x-hidden"
                 style={{ height: "75%" }}
               >
-                {/* <form className="register text-start">
-                  <div className="mb-4">
-                    <label for="email" className="mb-3">
-                      Email
-                    </label>
-                    <input type="text" placeholder="Email" />
-                  </div>
-                  <div className="mb-4">
-                    <label for="username" className="mb-3">
-                      Username
-                    </label>
-                    <input
-                      type="text"
-                      placeholder="Username"
-                      className="w-full"
-                    />
-                  </div>
-                  <div className="mb-4">
-                    <label for="password" className="mb-3">
-                      Password
-                    </label>
-                    <input
-                      type="password"
-                      placeholder="password"
-                      className="w-full"
-                    />
-                  </div>
-                  <div className="mb-5 flex items-center">
-                    <div style={{ width: "40px" }} className="mr-4 self-center">
-                      <input type="checkbox" className="accept " />
-                    </div>
-                    <p>
-                      I am over 18 years old and I accept the{" "}
-                      <Link
-                        className="text-pink ml-auto"
-                        target="_blank"
-                        href="/"
-                      >
-                        Terms & Conditions.
-                      </Link>
-                    </p>
-                  </div>
-                  <button
-                    className="rounded-md bg-pink text-white font-extrabold py-4 px-10 mb-4"
-                    type="submit"
-                    onClick={openModal}
-                  >
-                    Sign Up
-                  </button>
-                </form> */}
                 <Formik
                   initialValues={initialSignupValues}
                   validationSchema={signupValidationSchema}
@@ -210,6 +187,88 @@ export default function SignupLogin({
                 >
                   {({ isValid }) => (
                     <Form className="register text-start">
+                      <div className="mb-4">
+                        <label htmlFor="firstName" className="mb-3">
+                          Firstname
+                        </label>
+                        <Field
+                          type="text"
+                          name="firstName"
+                          placeholder="Firstname"
+                          className="w-full"
+                        />
+                        <ErrorMessage
+                          name="firstName"
+                          component="span"
+                          style={{ color: "red" }}
+                        />
+                      </div>
+                      <div className="mb-4">
+                        <label htmlFor="lastName" className="mb-3">
+                          Lastname
+                        </label>
+                        <Field
+                          type="text"
+                          name="lastName"
+                          placeholder="Lastname"
+                          className="w-full"
+                        />
+                        <ErrorMessage
+                          name="lastName"
+                          component="span"
+                          style={{ color: "red" }}
+                        />
+                      </div>
+                      <div className="mb-4">
+                        <label htmlFor="location" className="mb-3">
+                          Location
+                        </label>
+                        <Field
+                          type="text"
+                          name="location"
+                          placeholder="Location"
+                          className="w-full"
+                        />
+                        <ErrorMessage
+                          name="location"
+                          component="span"
+                          style={{ color: "red" }}
+                        />
+                      </div>
+                      <div className="mb-4">
+                        <label htmlFor="age" className="mb-3">
+                          Age
+                        </label>
+                        <Field
+                          type="number"
+                          name="age"
+                          placeholder="Age"
+                          className="w-full"
+                        />
+                        <ErrorMessage
+                          name="age"
+                          component="span"
+                          style={{ color: "red" }}
+                        />
+                      </div>
+                      <div className="mb-4">
+                        <label htmlFor="userName" className="mb-3">
+                          Username
+                        </label>
+                        <Field
+                          type="text"
+                          name="userName"
+                          placeholder="Username"
+                          className="w-full"
+                          autoComplete="off"
+                        />
+                        <ErrorMessage
+                          name="userName"
+                          component="span"
+                          style={{ color: "red" }}
+                        />
+                      </div>
+
                       <div className="mb-4">
                         <label htmlFor="email" className="mb-3">
                           Email
@@ -222,17 +281,17 @@ export default function SignupLogin({
                         />
                       </div>
                       <div className="mb-4">
-                        <label htmlFor="username" className="mb-3">
-                          Username
+                        <label htmlFor="phoneNumber" className="mb-3">
+                          Phone number
                         </label>
                         <Field
                           type="text"
-                          name="username"
-                          placeholder="Username"
+                          name="phoneNumber"
+                          placeholder="Phone Number"
                           className="w-full"
                         />
                         <ErrorMessage
-                          name="username"
+                          name="phoneNumber"
                           component="span"
                           style={{ color: "red" }}
                         />
@@ -244,7 +303,7 @@ export default function SignupLogin({
                         <Field
                           type="password"
                           name="password"
-                          placeholder="password"
+                          placeholder="Password"
                           className="w-full"
                         />
                         <ErrorMessage
@@ -253,8 +312,25 @@ export default function SignupLogin({
                           style={{ color: "red" }}
                         />
                       </div>
+                      <div className="mb-4">
+                        <label htmlFor="confirmPassword" className="mb-3">
+                          Confirm password
+                        </label>
+                        <Field
+                          type="password"
+                          name="confirmPassword"
+                          placeholder="Confirm password"
+                          className="w-full"
+                        />
+                        <ErrorMessage
+                          name="confirmPassword"
+                          component="span"
+                          style={{ color: "red" }}
+                        />
+                      </div>
+
                       <div className="mb-5 flex items-center">
-                        <div
+                        {/* <div
                           style={{ width: "40px" }}
                           className="mr-4 self-center"
                         >
@@ -268,7 +344,7 @@ export default function SignupLogin({
                             component="span"
                             style={{ color: "red", display: "block" }}
                           />
-                        </div>
+                        </div> */}
                         <p>
                           I am over 18 years old and I accept the{" "}
                           <Link
@@ -302,32 +378,6 @@ export default function SignupLogin({
                 className="pd-sm m-auto text-start overflow-scroll overflow-x-hidden"
                 style={{ height: "75%" }}
               >
-                {/* <form className="register">
-                  <div className="mb-4">
-                    <label for="email">Email</label>
-                    <input type="text" placeholder="Email" />
-                  </div>
-                  <div className="mb-4">
-                    <label for="password">Password</label>
-                    <input
-                      type="password"
-                      placeholder="Password"
-                      className="w-full"
-                    />
-                  </div>
-                  <button
-                    className="text-pink underline block mb-4"
-                    onClick={handleIsForgotOpen}
-                  >
-                    Forgot Password
-                  </button>
-                  <button
-                    className="rounded-md bg-pink text-white font-extrabold py-4 px-10 mb-4 block"
-                    type="submit"
-                  >
-                    Login
-                  </button>
-                </form> */}
                 <Formik
                   initialValues={initialLoginValues}
                   validationSchema={loginValidationSchema}
@@ -372,7 +422,7 @@ export default function SignupLogin({
                     </button>
                   </Form>
                 </Formik>
-                {/* </form> */}
+
                 <button className="text-pink underline" onClick={showSignup}>
                   Create an account
                 </button>

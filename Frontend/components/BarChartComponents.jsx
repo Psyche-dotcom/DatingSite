@@ -62,19 +62,19 @@ const BarChartComponent = () => {
       </div>
       <div class="grid grid-cols-2 gap-4 bg-white rounded-lg p-5">
         <div>
-          <h4 className="text-h3">Average sales</h4>
+          <h4 className="text-h3">Total minutes Sold</h4>
           <h4 className="text-h4">$650</h4>
         </div>
         <div>
-          <h5>Commissions</h5>
+          <h5>Total Minutes Amount generated</h5>
           <h6 className="text-h4">$29,500</h6>
         </div>
         <div>
-          <h5>Revenue</h5>
+          <h5>Total Minutes used</h5>
           <h6 className="text-h4">$29,500</h6>
         </div>
         <div>
-          <h5>Expenses</h5>
+          <h5>Total minutes used Amount generated</h5>
           <h6 className="text-h4">$1,129,500</h6>
         </div>
       </div>
