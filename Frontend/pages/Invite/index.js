@@ -22,7 +22,7 @@ const Invite = () => {
       .email("Invalid email format")
       .required("Email is required"),
     age: Yup.string().required("Age is required"),
-    gender: Yup.string().required("Last name is required"),
+    gender: Yup.string().required("Gender is required"),
   });
 
   const handleSubmit = async (values) => {
@@ -51,7 +51,6 @@ const Invite = () => {
           <h3 className="font-semibold text-3xl text-center text-black">
             Add Cam girls
           </h3>
-
           <Formik
             initialValues={initialValues}
             validationSchema={validationSchema}

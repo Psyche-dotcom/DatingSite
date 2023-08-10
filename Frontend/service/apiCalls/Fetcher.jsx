@@ -30,7 +30,11 @@ export const useDataFetching = (url) => {
 // Function to make a POST request using Axios
 export const postData = async (url, data) => {
   try {
-    const response = await axios.post(url, data);
+    const response = await axios.post(url, data, {
+      headers: {
+        "Content-Type": "application/json; charset=utf-8",
+      },
+    });
     return response.data;
   } catch (error) {
     throw error;
