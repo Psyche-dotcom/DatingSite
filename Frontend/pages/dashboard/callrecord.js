@@ -15,8 +15,10 @@ const CamManage = () => {
         <table className="w-full tabble">
           <thead>
             <tr>
-              <th>Cam Girls</th>
-              <th>Actions</th>
+              <th>User</th>
+              <th>Email</th>
+              <th>Phone Number</th>
+              <th>Minutes</th>
             </tr>
           </thead>
           <tbody>
