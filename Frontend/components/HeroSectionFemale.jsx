@@ -152,9 +152,6 @@ export default function HerosectionFemale() {
   };
 
   const handleUserChange = (value) => {
-    // setShowAccountDetails(value);
-    // username = value;
-    // console.log(username);
     setUsername(value);
   };
   const handleMailChange = (value) => {
@@ -334,7 +331,7 @@ export default function HerosectionFemale() {
                   Signup
                 </button>
               )}
-              {isAuthenticated && (
+              {token && (
                 <AccountDropdown
                   anchorEl={anchorEl}
                   onClose={handleDropdownClose}
@@ -374,11 +371,7 @@ export default function HerosectionFemale() {
         <h6 className="text-semibold text-xl mb-4">
           1 million members from 100+ countries!
         </h6>
-
-        <button onClick={openSignupModal} className="btn-custom">
-          Start chatting
-        </button>
-        <AuthChatting />
+        {token && <AuthChatting />}
         <p>You will be asked to activate your camera</p>
       </div>
     </section>
