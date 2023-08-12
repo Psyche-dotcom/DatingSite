@@ -30,9 +30,6 @@ export default function HerosectionMale() {
 
     setToken(localToken);
   }, []);
-  // const { data, error, revalidate } = useSWR(["authenticatedDataUrl", token]);
-  // const { data, error } = useSWR(["authenticatedDataUrl", token]);
-  // const [isAuthenticated, setIsAuthenticated] = useState(!!token);
 
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -369,11 +366,7 @@ export default function HerosectionMale() {
         <h6 className="text-semibold text-xl mb-4">
           1 million members from 100+ countries!
         </h6>
-
-        <button onClick={openSignupModal} className="btn-custom">
-          Start chatting
-        </button>
-        <AuthChatting />
+        {token && <AuthChatting />}
         <p>You will be asked to activate your camera</p>
       </div>
     </section>
