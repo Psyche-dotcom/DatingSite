@@ -1,11 +1,7 @@
 import { useState } from "react";
-import LinearProgress from "@mui/material/LinearProgress";
-
+import { dummyData } from "@/contants";
 import Image from "next/image";
-import Link from "next/link";
 import BarChartComponent from "./BarChartComponents";
-import AreaChartComponent from "./AreaChartComponent";
-import AreaChartComponentBlue from "./AreaChartComponentBlue";
 
 const DashboardMain = () => {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -21,8 +17,15 @@ const DashboardMain = () => {
     <div className="bg-grey p-5">
       <BarChartComponent />
       <div className="bg-white shadow-md rounded-lg p-4 mb-5">
-        <h5 className="text-h5">Top 5 cam girls</h5>
-
+        <form className="my-4 mx-4">
+          <label className="mb-2 block">Select top cam girls</label>
+          <input
+            type="search"
+            name="search"
+            placeholder="Select top cam girls"
+            className="border-2 rounded-md focus:outline-none p-4 w-1/2"
+          />
+        </form>
         <table className="w-full tabble">
           <thead>
             <tr>
@@ -31,108 +34,40 @@ const DashboardMain = () => {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>
-                <div className="flex items-center gap-4">
-                  <Image
-                    src="/asset/testImage.jpg"
-                    height={45}
-                    width={45}
-                    className="rounded-md"
-                    alt="User image"
-                  />
-                  <div>
-                    <p className="text-h6">Ana Simmons</p>
-                  </div>
-                </div>
-              </td>
-              <td>
-                <p className="text-h6">Intertico</p>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div className="flex items-center gap-4">
-                  <Image
-                    src="/asset/testImage.jpg"
-                    height={45}
-                    width={45}
-                    className="rounded-md"
-                    alt="User icon"
-                  />
-                  <div>
-                    <p className="text-h6">Ana Simmons</p>
-                  </div>
-                </div>
-              </td>
-              <td>
-                <p className="text-h6">Intertico</p>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div className="flex items-center gap-4">
-                  <Image
-                    src="/asset/testImage.jpg"
-                    height={45}
-                    width={45}
-                    className="rounded-md"
-                    alt="User icon"
-                  />
-                  <div>
-                    <p className="text-h6">Ana Simmons</p>
-                  </div>
-                </div>
-              </td>
-              <td>
-                <p className="text-h6">Intertico</p>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div className="flex items-center gap-4">
-                  <Image
-                    src="/asset/testImage.jpg"
-                    height={45}
-                    width={45}
-                    className="rounded-md"
-                    alt="User icon"
-                  />
-                  <div>
-                    <p className="text-h6">Ana Simmons</p>
-                  </div>
-                </div>
-              </td>
-              <td>
-                <p className="text-h6">Intertico</p>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div className="flex items-center gap-4">
-                  <Image
-                    src="/asset/testImage.jpg"
-                    height={45}
-                    width={45}
-                    className="rounded-md"
-                    alt="User icon"
-                  />
-                  <div>
-                    <p className="text-h6">Ana Simmons</p>
-                  </div>
-                </div>
-              </td>
-              <td>
-                <p className="text-h6">Intertico</p>
-              </td>
-            </tr>
+            {dummyData.map((user) => {
+              return (
+                <tr key={user.id}>
+                  <td>
+                    <div className="flex items-center gap-4">
+                      <Image
+                        src="/asset/testImage.jpg"
+                        height={45}
+                        width={45}
+                        className="rounded-md"
+                        alt="User image"
+                      />
+                      <div>
+                        <p className="text-h6">{user.name}</p>
+                      </div>
+                    </div>
+                  </td>
+                  <td>1500 Minutes</td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>
-      {/* <AreaChartComponent />
-      <AreaChartComponentBlue /> */}
       <div className="bg-white shadow-md rounded-lg p-4 w-full mb-5">
-        <h5 className="mb-5 text-h5">Top 5 users</h5>
+        <form className="my-4 mx-4">
+          <label className="mb-2 block">Select top users</label>
+          <input
+            type="search"
+            name="search"
+            placeholder="Select number of top users"
+            className="border-2 rounded-md focus:outline-none p-4 w-1/2"
+          />
+        </form>
 
         <table className="w-full tabble">
           <thead>
@@ -142,85 +77,32 @@ const DashboardMain = () => {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>
-                <div className="flex items-center gap-4">
-                  <Image
-                    src="/asset/testImage.jpg"
-                    height={45}
-                    width={45}
-                    className="rounded-md"
-                    alt="User image"
-                  />
-                  <div>
-                    <p className="text-h6">Ana Simmons</p>
-                  </div>
-                </div>
-              </td>
-              <td>
-                <p className="text-h6">Intertico</p>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div className="flex items-center gap-4">
-                  <Image
-                    src="/asset/testImage.jpg"
-                    height={45}
-                    width={45}
-                    className="rounded-md"
-                    alt="User icon"
-                  />
-                  <div>
-                    <p className="text-h6">Ana Simmons</p>
-                  </div>
-                </div>
-              </td>
-              <td>
-                <p className="text-h6">Intertico</p>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div className="flex items-center gap-4">
-                  <Image
-                    src="/asset/testImage.jpg"
-                    height={45}
-                    width={45}
-                    className="rounded-md"
-                    alt="User icon"
-                  />
-                  <div>
-                    <p className="text-h6">Ana Simmons</p>
-                  </div>
-                </div>
-              </td>
-              <td>
-                <p className="text-h6">Intertico</p>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div className="flex items-center gap-4">
-                  <Image
-                    src="/asset/testImage.jpg"
-                    height={45}
-                    width={45}
-                    className="rounded-md"
-                    alt="User icon"
-                  />
-                  <div>
-                    <p className="text-h6">Ana Simmons</p>
-                  </div>
-                </div>
-              </td>
-              <td>
-                <p className="text-h6">Intertico</p>
-              </td>
-            </tr>
+            {dummyData.map((user) => {
+              return (
+                <tr key={user.id}>
+                  <td>
+                    <div className="flex items-center gap-4">
+                      <Image
+                        src="/asset/testImage.jpg"
+                        height={45}
+                        width={45}
+                        className="rounded-md"
+                        alt="User image"
+                      />
+                      <div>
+                        <p className="text-h6">{user.name}</p>
+                      </div>
+                    </div>
+                  </td>
+
+                  <td>1500 Minutes</td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>
+
       <div className="bg-white shadow-md rounded-lg p-4 mb-5">
         <h5 className="text-h5">Trends</h5>
 
@@ -287,7 +169,7 @@ const DashboardMain = () => {
           <p className="text-h5">+82$</p>
         </div>
       </div>
-      <div className="grid md:grid-cols-3 gap-4">
+      {/* <div className="grid md:grid-cols-3 gap-4">
         <div className="bg-white shadow-md rounded-lg p-4 w-full">
           <h5 className="mb-5 text-h5">Authors</h5>
           <div className="flex gap-2 items-center">
@@ -447,7 +329,7 @@ const DashboardMain = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };
