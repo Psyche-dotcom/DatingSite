@@ -21,7 +21,7 @@ const DashboardSidebar = () => {
         <h4 className="my-5 text-h4">Projects</h4>
         <ul className="sidebar-lists">
           <li>
-            <Link className="sidebar_icon" href="/Dashboard/dashboard">
+            <Link className="sidebar_icon" href="/dashboard/">
               <div className="sidebar__icon">
                 <Image
                   src="/favicon_io/bebo.svg"
@@ -36,7 +36,7 @@ const DashboardSidebar = () => {
             </Link>
           </li>
           <li>
-            <Link className="sidebar_icon" href="/Dashboard/usermanagement">
+            <Link className="sidebar_icon" href="/dashboard/usermanagement">
               <div className="sidebar__icon">
                 <Image
                   src="/favicon_io/bebo.svg"
@@ -51,7 +51,7 @@ const DashboardSidebar = () => {
             </Link>
           </li>
           <li>
-            <Link className="sidebar_icon" href="/Dashboard/cammanagement">
+            <Link className="sidebar_icon" href="/dashboard/cammanagement">
               <div className="sidebar__icon">
                 <Image
                   src="/favicon_io/vimeo.svg"
