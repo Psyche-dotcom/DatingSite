@@ -61,7 +61,7 @@ const PurchaseTimeModal = ({ onValueChange }) => {
                 <p className="mr-auto">90 minutes</p>
                 <p>99.99 USD</p>
               </button>
-              <p className="text-xl text-black">Let's Encrypt</p>
+              <p className="text-xl text-black">Let&apos;s Encrypt</p>
             </div>
 
             <button onClick={closeModal}>

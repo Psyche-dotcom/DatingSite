@@ -65,7 +65,7 @@ const SignupFemale = ({ onValueCloseSignChange }) => {
         </button>
         <div className="pd-sm">
           <h3 className="font-semibold text-3xl">My account</h3>
-          <p>Welcome! Let's start by creating an account.</p>
+          <p>Welcome! Let&apos;s start by creating an account.</p>
           <p>It only takes 3 minutes!</p>
           <Formik
             initialValues={initialValues}

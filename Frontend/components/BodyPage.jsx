@@ -1,5 +1,6 @@
 import SmoothScrollLink from "./SmoothScrollLink";
 import Image from "next/image";
+
 export default function BodyPage() {
   return (
     <div>
@@ -29,9 +30,9 @@ export default function BodyPage() {
           <h5>
             Start a private video chat with a random person in just 10 seconds.
             LuckyCrush randomly connects men with women and women with men. If
-            you don’t like your match, just click “Next” to be connected with a
-            new stranger in a second. Meeting new friends from all over the
-            world has never been easier.
+            you don&apos;t like your match, just click &ldquo;Next&rdquo; to be
+            connected with a new stranger in a second. Meeting new friends from
+            all over the world has never been easier.
           </h5>
         </div>
       </section>
@@ -45,8 +46,8 @@ export default function BodyPage() {
             might not always speak the same language as your partner. No
             problem! Our instant translation system automatically translates
             incoming messages into your language and outgoing messages into your
-            partner's language. You won't even realize that your partner is on
-            the other side of the world.
+            partner&apos;s language. You won&apos;t even realize that your
+            partner is on the other side of the world.
           </h5>
         </div>
         <div className="w-full">
@@ -91,8 +92,8 @@ export default function BodyPage() {
           Want to give it a try?
         </h1>
         <h6 className="mb-10">
-          Select your gender, click "start searching"... That's it! You're in a
-          private live
+          Select your gender, click &ldquo;start searching&rdquo;... That&apos;s
+          it! You&apos;re in a private live
           <br /> video chat with a random person.{" "}
           <span className="font-bold">No signup needed</span>.
         </h6>

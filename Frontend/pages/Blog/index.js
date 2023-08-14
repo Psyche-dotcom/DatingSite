@@ -20,9 +20,9 @@ const Blog = () => {
             </button>
           </div>
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 ">
-            {blogData.map((blog) => {
+            {blogData.map((blog, index) => {
               return (
-                <Link href="#" className="pb-4">
+                <Link href="#" className="pb-4" key={index}>
                   <div style={{ height: "15rem" }}>
                     <Image
                       src={blog.imageUrl}

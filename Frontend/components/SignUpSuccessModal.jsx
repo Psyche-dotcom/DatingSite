@@ -43,7 +43,7 @@ const SignupSuccessModal = ({ onValueCloseSuccessSignup }) => {
               />
               <p>Faster Matchmaking</p>
             </div>
-            <p className="mb-2">Can't find our email?</p>
+            <p className="mb-2">Can&apos;t find our email?</p>
 
             <button className="btn-custom" type="submit">
               Resend activation link!
